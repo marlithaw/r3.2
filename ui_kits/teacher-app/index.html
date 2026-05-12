@@ -161,6 +161,60 @@
   .plural-card .lbl { font-family: var(--font-mono); font-weight: 700; font-size: 9px; letter-spacing: 0.14em; color: var(--amber); text-transform: uppercase; }
   .plural-card .h { font-family: var(--font-marker); color: var(--teal-dark); font-size: 22px; line-height: 1.15; margin: 6px 0 4px; }
   .plural-card .s { font-size: 11px; color: var(--cool-muted); }
+
+  /* 04 Playbook */
+  .pb-index { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+  .pb-card { background: #fff; border: 1px solid rgba(0,0,0,0.06); border-top: 3px solid var(--teal-mid); border-radius: 8px; padding: 10px; position: relative; }
+  .pb-card.bel { border-top-color: var(--orange-pop); }
+  .pb-card.grw { border-top-color: var(--amber); }
+  .pb-card .name { font-family: var(--font-display); font-weight: 700; font-size: 12px; color: var(--teal-dark); line-height: 1.2; margin: 4px 0 6px; }
+  .pb-card .ring { position: absolute; top: 8px; right: 8px; width: 22px; height: 22px; border-radius: 50%; background: conic-gradient(var(--orange-pop) 0 70%, var(--teal-surface) 0); display: flex; align-items: center; justify-content: center; }
+  .pb-card .ring::after { content: ""; width: 14px; height: 14px; border-radius: 50%; background: #fff; }
+  .pb-zone { background: var(--teal-mist); border-left: 2px solid var(--teal-mid); border-radius: 4px; padding: 8px 10px; font-size: 11px; line-height: 1.4; margin-bottom: 4px; }
+  .pb-zone strong { font-family: var(--font-mono); font-weight: 700; font-size: 8.5px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--teal-mid); display: block; margin-bottom: 2px; }
+  .gb-tabs { display: flex; gap: 4px; margin: 4px 0 6px; border-bottom: 1px solid rgba(0,0,0,0.08); }
+  .gb-tab { font-family: var(--font-mono); font-weight: 700; font-size: 9px; letter-spacing: 0.1em; padding: 5px 0; flex: 1; text-align: center; color: var(--cool-muted); text-transform: uppercase; border-bottom: 2px solid transparent; }
+  .gb-tab.on { color: var(--orange-pop); border-bottom-color: var(--orange-pop); }
+  .say-block { background: #fff; border: 1px solid rgba(0,0,0,0.06); border-left: 3px solid var(--orange-pop); border-radius: 4px; padding: 8px 10px; margin-top: 4px; }
+  .say-block .l { font-family: var(--font-mono); font-weight: 700; font-size: 8.5px; letter-spacing: 0.12em; color: var(--orange-pop); text-transform: uppercase; }
+  .say-block .t { font-family: var(--font-display); font-weight: 600; font-size: 13px; color: var(--teal-dark); margin-top: 2px; line-height: 1.3; }
+  .say-block.bad { border-left-color: var(--red-warn); }
+  .say-block.bad .l { color: var(--red-warn); }
+  .say-block.bad .t { font-family: var(--font-mono); font-weight: 500; font-size: 11px; color: var(--red-warn); text-decoration: line-through; }
+
+  /* 05 Practice */
+  .pp-scenario { background: #fff; border: 1px solid rgba(0,0,0,0.06); border-top: 3px solid var(--orange-pop); border-radius: 8px; padding: 10px; margin-bottom: 6px; position: relative; }
+  .pp-scenario .name { font-family: var(--font-display); font-weight: 700; font-size: 12px; color: var(--teal-dark); margin: 4px 0; }
+  .pp-scenario .pp-row { display: flex; gap: 6px; align-items: center; }
+  .pp-stage { background: linear-gradient(160deg,#092D3A,#0C3645); border-radius: 10px; padding: 12px; color: #fff; }
+  .pp-stage .step { font-family: var(--font-mono); font-weight: 700; font-size: 8.5px; letter-spacing: 0.12em; color: var(--amber); text-transform: uppercase; }
+  .pp-stage .h { font-family: var(--font-display); font-weight: 700; font-size: 14px; margin: 4px 0 8px; line-height: 1.25; }
+  .choice { display: block; width: 100%; text-align: left; background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.18); color: #fff; font-family: var(--font-body); font-size: 11px; line-height: 1.3; padding: 8px 10px; border-radius: 6px; margin-bottom: 4px; box-sizing: border-box; }
+  .choice.on { background: rgba(255,107,0,0.15); border-color: var(--orange-pop); }
+  .runback { padding: 8px 16px; text-align: center; }
+  .runback .pill { display: inline-flex; align-items: center; gap: 6px; padding: 7px 14px; border: 1.5px solid var(--teal-mid); color: var(--teal-mid); border-radius: 999px; font-family: var(--font-mono); font-weight: 700; font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; background: #fff; }
+  .score-row { display: grid; grid-template-columns: repeat(2,1fr); gap: 6px; margin-top: 8px; }
+  .score-row .mini { background: #fff; border: 1px solid rgba(0,0,0,0.06); border-top: 3px solid var(--teal-mid); border-radius: 6px; padding: 8px; }
+  .score-row .mini .l { font-family: var(--font-mono); font-weight: 700; font-size: 8px; letter-spacing: 0.12em; color: var(--cool-muted); text-transform: uppercase; }
+  .score-row .mini .v { font-family: var(--font-display); font-weight: 800; font-size: 18px; color: var(--teal-dark); margin-top: 2px; letter-spacing: -0.02em; }
+  .score-row .mini.ok .v { color: var(--green-check); }
+
+  /* 08 Remix */
+  .mode-tabs { display: grid; grid-template-columns: repeat(4, 1fr); gap: 4px; background: var(--teal-mist); padding: 4px; border-radius: 8px; margin-bottom: 10px; }
+  .mode-tab { font-family: var(--font-mono); font-weight: 700; font-size: 9px; letter-spacing: 0.08em; text-align: center; padding: 6px 2px; border-radius: 5px; color: var(--cool-muted); text-transform: uppercase; }
+  .mode-tab.on { background: #fff; color: var(--teal-dark); box-shadow: 0 1px 3px rgba(0,0,0,0.06); }
+  .mode-tab .l { display: block; font-size: 8px; color: var(--orange-pop); margin-bottom: 1px; }
+  .rx-input { background: #fff; border: 1px solid rgba(0,0,0,0.06); border-top: 3px solid var(--teal-mid); border-radius: 6px; padding: 8px 10px; font-size: 11px; color: var(--deep-ink); margin-bottom: 5px; line-height: 1.4; }
+  .rx-input strong { font-family: var(--font-mono); font-weight: 700; font-size: 8.5px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--teal-mid); display: block; margin-bottom: 3px; }
+  .rx-output { background: var(--teal-deepest); border-radius: 10px; padding: 12px; color: #fff; margin-top: 6px; }
+  .rx-output .lbl { font-family: var(--font-mono); font-weight: 700; font-size: 9px; letter-spacing: 0.12em; color: var(--amber); text-transform: uppercase; }
+  .rx-line { padding: 8px 10px; margin-top: 6px; border-radius: 5px; }
+  .rx-line.strong { background: rgba(255,107,0,0.15); border-left: 3px solid var(--orange-pop); }
+  .rx-line.short { background: rgba(255,255,255,0.05); border-left: 3px solid var(--teal-bright); }
+  .rx-line.bad { background: rgba(184,66,61,0.18); border-left: 3px solid var(--red-warn); }
+  .rx-line .l { font-family: var(--font-mono); font-weight: 700; font-size: 8.5px; letter-spacing: 0.12em; text-transform: uppercase; opacity: 0.85; }
+  .rx-line .t { font-family: var(--font-display); font-weight: 600; font-size: 13px; margin-top: 2px; line-height: 1.3; }
+  .rx-line.bad .t { font-family: var(--font-mono); font-weight: 500; font-size: 11px; text-decoration: line-through; opacity: 0.9; }
 </style>
 </head>
 <body>
@@ -168,7 +222,7 @@
   <header class="page-head">
     <div class="tag">R³AP · TEACHER APP · UI KIT v1</div>
     <h1>The 10-Track Studio</h1>
-    <p>High-fidelity recreation of the R³AP Teacher app, screen by screen. Mobile-first (375px). Token-bound — every surface, border, color, and font comes from <code>colors_and_type.css</code>. Use these frames as the canonical reference when designing new screens or variants.</p>
+    <p>High-fidelity recreation of the R³AP Teacher app, screen by screen — all 10 tracks: Clear the Fog · Check Your Levels · Load the Track · Read the Playbook · Practice Station · Live · Liner Notes · Remix · The Cypher · Master the Flow. Mobile-first (375px). Token-bound — every surface, border, color, and font comes from <code>colors_and_type.css</code>. Use these frames as the canonical reference when designing new screens or variants.</p>
   </header>
 
   <!-- 01 Clear the Fog -->
@@ -302,6 +356,120 @@
     </div>
   </section>
 
+  <!-- 04 Playbook + 05 Practice -->
+  <section class="row">
+    <div class="row-head"><div class="num">Tracks 04 + 05 · Learn the Move</div><h2>Read the Playbook · Practice Station</h2><p>Playbook is the entry's 10-zone breakdown with Grade-Band Response Guidance. Practice Station turns it into reps — choose the next line, identify the pattern, run that back.</p></div>
+    <div class="frames">
+
+      <!-- 04 Read the Playbook -->
+      <div class="phone"><div class="screen">
+        <div class="status-bar"><div class="l"><span class="dot"></span>R³AP · LIVE</div><div>9:46</div></div>
+        <div class="screen-body">
+          <div class="hero">
+            <div class="tag">SCREEN 04 · LEARN THE MOVE</div>
+            <h1 style="font-size:22px;">Read the Playbook</h1>
+            <p>Learn the move before the moment tests it.</p>
+          </div>
+          <div class="sect">
+            <div class="sect-h">Playbook Index</div>
+            <div class="pb-index">
+              <div class="pb-card bel"><div class="ring"></div><span class="pill pill-orange">Belonging</span><div class="name">Entry Routine</div><div style="font-family:var(--font-mono);font-size:8.5px;letter-spacing:0.1em;color:var(--cool-muted);text-transform:uppercase;">G7 · 7/10 ZONES</div></div>
+              <div class="pb-card"><div class="ring" style="background:conic-gradient(var(--orange-pop) 0 30%, var(--teal-surface) 0);"></div><span class="pill pill-teal">Regulation</span><div class="name">Refusing Routine</div><div style="font-family:var(--font-mono);font-size:8.5px;letter-spacing:0.1em;color:var(--cool-muted);text-transform:uppercase;">G7-8 · 3/10</div></div>
+              <div class="pb-card grw"><div class="ring" style="background:conic-gradient(var(--orange-pop) 0 50%, var(--teal-surface) 0);"></div><span class="pill pill-amber">Growth</span><div class="name">Repair Conversation</div><div style="font-family:var(--font-mono);font-size:8.5px;letter-spacing:0.1em;color:var(--cool-muted);text-transform:uppercase;">G7 · 5/10</div></div>
+              <div class="pb-card"><div class="ring" style="background:conic-gradient(var(--orange-pop) 0 90%, var(--teal-surface) 0);"></div><span class="pill pill-teal">Regulation</span><div class="name">Assigned Seat Follow-Through</div><div style="font-family:var(--font-mono);font-size:8.5px;letter-spacing:0.1em;color:var(--cool-muted);text-transform:uppercase;">G7 · 9/10</div></div>
+            </div>
+          </div>
+          <div class="sect">
+            <div class="sect-h">Refusing Routine · 10-Zone Entry</div>
+            <div class="pb-zone"><strong>1 · What this solves</strong>Student refuses an opening expectation while peers are watching.</div>
+            <div class="pb-zone"><strong>2 · Why it matters</strong>If left unaddressed, the room reads the refusal as the new norm.</div>
+            <div class="pb-zone"><strong>3 · Teacher setup</strong>Seat posted in advance. Voice flat. Body squared. Eyes off the student first.</div>
+          </div>
+          <div class="sect">
+            <div class="sect-h">Grade-Band Response Guidance</div>
+            <div class="gb-tabs"><div class="gb-tab">G5</div><div class="gb-tab">G6</div><div class="gb-tab on">G7</div><div class="gb-tab">G8</div></div>
+            <div class="ucard" style="padding:10px;background:var(--teal-mist);border:1px solid rgba(26,95,122,0.18);border-top:1px solid rgba(26,95,122,0.18);">
+              <div style="font-family:var(--font-mono);font-weight:700;font-size:9px;letter-spacing:0.12em;color:var(--teal-mid);text-transform:uppercase;">Coaching Stance</div>
+              <div style="font-size:11.5px;line-height:1.4;margin-top:4px;color:var(--deep-ink);">High clarity, low emotional reactivity. Strategic attention. Precise follow-through. Address privately when the room is moving.</div>
+            </div>
+            <div class="say-block"><div class="l">SAY THIS</div><div class="t">Your seat is posted. Find it.</div></div>
+            <div class="say-block bad"><div class="l">DO NOT SAY</div><div class="t">Why do you always do this?</div></div>
+          </div>
+          <div class="cta-row" style="display:flex;gap:6px;">
+            <button class="btn-primary" style="flex:1;padding:10px;font-size:13px;">Practice This</button>
+            <button class="btn-secondary" style="padding:10px 14px;font-size:13px;">Save to Live ★</button>
+          </div>
+        </div>
+        <div class="nav-bar">
+          <div class="tab"><div class="ic">◌</div><div>Fog</div></div>
+          <div class="tab"><div class="ic">▌▐</div><div>Levels</div></div>
+          <div class="tab active"><div class="ic">▤</div><div>Play</div></div>
+          <div class="tab"><div class="ic">✎</div><div>Notes</div></div>
+          <div class="tab"><div class="ic">⌇</div><div>Flow</div></div>
+        </div>
+      </div></div>
+
+      <!-- 05 Practice Station -->
+      <div class="phone"><div class="screen">
+        <div class="status-bar"><div class="l"><span class="dot"></span>R³AP · LIVE</div><div>10:04</div></div>
+        <div class="screen-body">
+          <div class="hero">
+            <div class="tag">SCREEN 05 · REPS</div>
+            <h1 style="font-size:22px;">Practice Station</h1>
+            <p>Run the moment before it runs you.</p>
+          </div>
+          <div class="sect">
+            <div class="sect-h">Scenario Selector</div>
+            <div class="pp-scenario">
+              <div class="pp-row" style="justify-content:space-between;">
+                <span class="pill pill-orange">REFUSING ROUTINE</span>
+                <span style="font-family:var(--font-mono);font-size:9px;letter-spacing:0.1em;color:var(--teal-mid);text-transform:uppercase;">~3 MIN</span>
+              </div>
+              <div class="name">7th period · seat refusal during entry</div>
+              <div class="pp-row" style="margin-top:4px;"><div class="diff"><i class="on"></i><i class="on"></i><i></i></div><span style="font-family:var(--font-mono);font-size:8.5px;letter-spacing:0.1em;color:var(--cool-muted);text-transform:uppercase;margin-left:6px;">Difficulty 2 / 3</span></div>
+            </div>
+          </div>
+          <div class="sect">
+            <div class="pp-stage">
+              <div class="step">STEP 4 OF 6 · R³AP RESPONSE</div>
+              <div class="h">Choose the next line.</div>
+              <button class="choice">"Sit down right now or I'm calling home."</button>
+              <button class="choice on">"Your seat is posted. Find it."</button>
+              <button class="choice">"Why are you always like this on Mondays?"</button>
+              <div style="display:flex;gap:6px;margin-top:8px;">
+                <span class="pill" style="background:rgba(255,255,255,0.10);color:var(--amber);">TONE · FLAT</span>
+                <span class="pill" style="background:rgba(255,255,255,0.10);color:var(--teal-bright);">VOLUME · LOW</span>
+              </div>
+            </div>
+          </div>
+          <div class="sect" style="padding-top:0;">
+            <div class="sect-h">Did this protect instruction?</div>
+            <div style="display:flex;gap:6px;">
+              <span class="pill pill-green" style="padding:6px 10px;">YES</span>
+              <span class="pill pill-amber" style="padding:6px 10px;">PARTIALLY</span>
+              <span class="pill pill-red" style="padding:6px 10px;">NO</span>
+            </div>
+            <div class="score-row">
+              <div class="mini ok"><div class="l">Accuracy</div><div class="v">92%</div></div>
+              <div class="mini ok"><div class="l">Confidence</div><div class="v">High</div></div>
+              <div class="mini"><div class="l">Live Support</div><div class="v" style="font-size:14px;color:var(--orange-pop);">Not needed</div></div>
+              <div class="mini ok"><div class="l">Instr. Protected</div><div class="v">Yes</div></div>
+            </div>
+          </div>
+          <div class="runback"><span class="pill">↺ Run That Back</span></div>
+        </div>
+        <div class="nav-bar">
+          <div class="tab"><div class="ic">◌</div><div>Fog</div></div>
+          <div class="tab"><div class="ic">▤</div><div>Play</div></div>
+          <div class="tab active"><div class="ic">◐</div><div>Practice</div></div>
+          <div class="tab"><div class="ic">✎</div><div>Notes</div></div>
+          <div class="tab"><div class="ic">⌇</div><div>Flow</div></div>
+        </div>
+      </div></div>
+
+    </div>
+  </section>
+
   <!-- 06 Live -->
   <section class="row">
     <div class="row-head"><div class="num">Track 06 · Highest Urgency</div><h2>Live</h2><p>One screen. Six zones. No scroll. Pulsing mic, six callouts, and the Time-to-Learn FAB top-right.</p></div>
@@ -431,6 +599,106 @@
           <div class="tab"><div class="ic">⌇</div><div>Flow</div></div>
         </div>
       </div></div>
+    </div>
+  </section>
+
+  <!-- 08 Remix -->
+  <section class="row">
+    <div class="row-head"><div class="num">Track 08 · Replace the Pattern</div><h2>Remix</h2><p>Four modes — Rewrite, Build the Routine, Put It on a Track, Run That Back. Stronger lines replace the old reactive ones.</p></div>
+    <div class="frames">
+
+      <!-- 08 Remix · Rewrite Mode -->
+      <div class="phone"><div class="screen">
+        <div class="status-bar"><div class="l"><span class="dot"></span>R³AP · LIVE</div><div>3:38 PM</div></div>
+        <div class="screen-body">
+          <div class="hero">
+            <div class="tag">SCREEN 08 · REMIX</div>
+            <h1 style="font-size:22px;">Remix</h1>
+            <p>Replace the old pattern with a stronger track.</p>
+          </div>
+          <div class="sect">
+            <div class="mode-tabs">
+              <div class="mode-tab on"><span class="l">A</span>Rewrite</div>
+              <div class="mode-tab"><span class="l">B</span>Routine</div>
+              <div class="mode-tab"><span class="l">C</span>Track</div>
+              <div class="mode-tab"><span class="l">D</span>↺ Back</div>
+            </div>
+            <div class="sect-h">Rewrite the Move · Inputs</div>
+            <div class="rx-input"><strong>What happened</strong>I told Marcus three times to sit. By the third time I was loud.</div>
+            <div class="rx-input"><strong>What I said</strong>"Why do you always do this? Just sit down."</div>
+            <div class="rx-input"><strong>Tone I want</strong>Flat. Firm. Short.</div>
+            <div class="rx-input"><strong>Follow-up plan</strong>Catch him at the door at the end of class.</div>
+          </div>
+          <div class="sect" style="padding-top:0;">
+            <div class="rx-output">
+              <div class="lbl">★ STRONGER TRACK</div>
+              <div class="rx-line strong"><div class="l">SAY THIS</div><div class="t">Your seat is posted. Find it.</div></div>
+              <div class="rx-line short"><div class="l">Shorter</div><div class="t">Seat. Now.</div></div>
+              <div class="rx-line bad"><div class="l">Do Not Say</div><div class="t">Why do you always do this?</div></div>
+              <div class="rx-line" style="background:rgba(50,117,140,0.18);border-left:3px solid var(--amber);"><div class="l" style="color:var(--amber);">Follow-up</div><div class="t" style="font-family:var(--font-body);font-weight:500;font-size:12px;font-style:italic;">Catch him at the door. One line: "Tomorrow we start clean."</div></div>
+            </div>
+          </div>
+          <div class="cta-row" style="display:flex;gap:6px;">
+            <button class="btn-primary" style="flex:1;padding:10px;font-size:13px;">Save to Live ★</button>
+            <button class="btn-secondary" style="padding:10px 12px;font-size:13px;">↺ Run Back</button>
+          </div>
+        </div>
+        <div class="nav-bar">
+          <div class="tab"><div class="ic">◌</div><div>Fog</div></div>
+          <div class="tab"><div class="ic">●</div><div>Track</div></div>
+          <div class="tab"><div class="ic">🎙</div><div>Live</div></div>
+          <div class="tab active"><div class="ic">⇄</div><div>Remix</div></div>
+          <div class="tab"><div class="ic">⌇</div><div>Flow</div></div>
+        </div>
+      </div></div>
+
+      <!-- 08 Remix · Build the Routine Mode -->
+      <div class="phone"><div class="screen">
+        <div class="status-bar"><div class="l"><span class="dot"></span>R³AP · LIVE</div><div>3:51 PM</div></div>
+        <div class="screen-body">
+          <div class="hero">
+            <div class="tag">SCREEN 08 · REMIX · MODE B</div>
+            <h1 style="font-size:22px;">Build the Routine</h1>
+            <p>Turn the breakdown into a track students can follow.</p>
+          </div>
+          <div class="sect">
+            <div class="mode-tabs">
+              <div class="mode-tab"><span class="l">A</span>Rewrite</div>
+              <div class="mode-tab on"><span class="l">B</span>Routine</div>
+              <div class="mode-tab"><span class="l">C</span>Track</div>
+              <div class="mode-tab"><span class="l">D</span>↺ Back</div>
+            </div>
+            <div class="sect-h">Entry Routine · v2</div>
+            <div class="rx-output" style="background:#fff;border:1px solid rgba(0,0,0,0.08);color:var(--deep-ink);box-shadow:var(--elev-1);">
+              <div class="lbl" style="color:var(--orange-pop);">★ STUDENT STEPS</div>
+              <ol style="font-family:var(--font-body);font-size:13px;line-height:1.55;margin:8px 0 0;padding-left:0;list-style:none;">
+                <li style="display:flex;gap:10px;padding:6px 0;border-top:1px solid rgba(0,0,0,0.06);"><span style="font-family:var(--font-mono);font-weight:700;color:var(--amber);width:22px;">01</span><span>Walk in. Eyes forward.</span></li>
+                <li style="display:flex;gap:10px;padding:6px 0;border-top:1px solid rgba(0,0,0,0.06);"><span style="font-family:var(--font-mono);font-weight:700;color:var(--amber);width:22px;">02</span><span>Check the board for your seat.</span></li>
+                <li style="display:flex;gap:10px;padding:6px 0;border-top:1px solid rgba(0,0,0,0.06);"><span style="font-family:var(--font-mono);font-weight:700;color:var(--amber);width:22px;">03</span><span>Sit. Pencil out. Do Now started.</span></li>
+                <li style="display:flex;gap:10px;padding:6px 0;border-top:1px solid rgba(0,0,0,0.06);"><span style="font-family:var(--font-mono);font-weight:700;color:var(--amber);width:22px;">04</span><span>Phones in pouch by the door.</span></li>
+                <li style="display:flex;gap:10px;padding:6px 0;border-top:1px solid rgba(0,0,0,0.06);"><span style="font-family:var(--font-mono);font-weight:700;color:var(--amber);width:22px;">05</span><span>Settle. We start when the bell stops.</span></li>
+              </ol>
+            </div>
+          </div>
+          <div class="sect" style="padding-top:0;">
+            <div class="say-block"><div class="l">TEACHER SCRIPT</div><div class="t">"Your seat is posted. Pencils out. Do Now started."</div></div>
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-top:8px;">
+              <div class="ucard" style="padding:8px;"><div style="font-family:var(--font-mono);font-weight:700;font-size:8px;letter-spacing:0.1em;color:var(--cool-muted);text-transform:uppercase;">Visual Cue</div><div style="font-family:var(--font-display);font-weight:700;font-size:12px;color:var(--teal-dark);margin-top:2px;">Seat map on door</div></div>
+              <div class="ucard action" style="padding:8px;"><div style="font-family:var(--font-mono);font-weight:700;font-size:8px;letter-spacing:0.1em;color:var(--cool-muted);text-transform:uppercase;">Practice Moment</div><div style="font-family:var(--font-display);font-weight:700;font-size:12px;color:var(--teal-dark);margin-top:2px;">Mon · 7th period</div></div>
+            </div>
+            <div class="pmt" style="margin-top:8px;"><strong>LINER NOTE PROMPT</strong>Did the routine hold under stress? Where did it break?</div>
+          </div>
+          <div class="runback"><span class="pill">↺ Run That Back</span></div>
+        </div>
+        <div class="nav-bar">
+          <div class="tab"><div class="ic">◌</div><div>Fog</div></div>
+          <div class="tab"><div class="ic">●</div><div>Track</div></div>
+          <div class="tab"><div class="ic">🎙</div><div>Live</div></div>
+          <div class="tab active"><div class="ic">⇄</div><div>Remix</div></div>
+          <div class="tab"><div class="ic">⌇</div><div>Flow</div></div>
+        </div>
+      </div></div>
+
     </div>
   </section>
 
