@@ -1,0 +1,489 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>R³AP · Design System · Modern Studio</title>
+<link rel="stylesheet" href="colors_and_type.css">
+<style>
+  html, body { margin: 0; padding: 0; background: var(--app-canvas); color: var(--deep-ink); font-family: var(--font-body); }
+  .page { max-width: 1280px; margin: 0 auto; padding: 56px 32px 96px; }
+
+  /* Hero */
+  .hero {
+    background: linear-gradient(160deg, var(--teal-deepest), var(--teal-dark));
+    color: #fff;
+    border-radius: var(--radius-card);
+    padding: 48px 40px;
+    position: relative;
+    overflow: hidden;
+    box-shadow: var(--elev-2);
+  }
+  .hero .tag {
+    font-family: var(--font-mono);
+    font-weight: 700;
+    font-size: 11px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--amber);
+  }
+  .hero h1 {
+    font-family: var(--font-display);
+    font-weight: 800;
+    font-size: 56px;
+    letter-spacing: -0.04em;
+    line-height: 1.02;
+    color: #fff;
+    margin: 12px 0 8px;
+    text-transform: uppercase;
+  }
+  .hero .sub {
+    font-family: var(--font-body);
+    font-size: 18px;
+    color: rgba(255,255,255,0.78);
+    line-height: 1.5;
+    max-width: 760px;
+    margin: 0 0 20px;
+  }
+  .hero .quote {
+    font-family: var(--font-body);
+    font-style: italic;
+    font-size: 15px;
+    color: rgba(255,255,255,0.7);
+    border-left: 3px solid var(--orange-pop);
+    padding: 4px 0 4px 14px;
+    max-width: 720px;
+  }
+  .hero .num-mark {
+    position: absolute;
+    right: -20px;
+    bottom: -60px;
+    font-family: var(--font-mono);
+    font-weight: 700;
+    font-size: 280px;
+    color: var(--teal-bright);
+    opacity: 0.10;
+    pointer-events: none;
+    user-select: none;
+    line-height: 1;
+  }
+  .hero-cta {
+    display: flex;
+    gap: 12px;
+    margin-top: 24px;
+    flex-wrap: wrap;
+  }
+
+  /* Section */
+  .section { margin-top: 64px; }
+  .section-head {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 16px;
+    margin-bottom: 20px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid rgba(0,0,0,0.08);
+  }
+  .section-head .lbl {
+    font-family: var(--font-mono);
+    font-weight: 700;
+    font-size: 11px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--orange-pop);
+  }
+  .section-head h2 {
+    font-family: var(--font-display);
+    font-weight: 800;
+    font-size: 32px;
+    letter-spacing: -0.03em;
+    color: var(--teal-dark);
+    margin: 4px 0 0;
+  }
+  .section-head p {
+    font-size: 14px;
+    color: var(--cool-muted);
+    max-width: 420px;
+    margin: 0;
+  }
+
+  /* Cards */
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 16px;
+  }
+  .tile {
+    background: #fff;
+    border: 1px solid rgba(0,0,0,0.08);
+    border-top: 3px solid var(--teal-mid);
+    border-radius: var(--radius-card);
+    box-shadow: var(--elev-1);
+    padding: 18px 18px 16px;
+    text-decoration: none;
+    color: inherit;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    transition: transform 0.18s ease, box-shadow 0.18s ease, border-color 0.18s ease;
+    position: relative;
+    overflow: hidden;
+  }
+  .tile:hover {
+    transform: translateY(-2px);
+    border-top-color: var(--orange-pop);
+    box-shadow: var(--elev-2);
+  }
+  .tile.action { border-top-color: var(--orange-pop); }
+  .tile.growth { border-top-color: var(--green-check); }
+  .tile.amber  { border-top-color: var(--amber); }
+  .tile .kicker {
+    font-family: var(--font-mono);
+    font-weight: 700;
+    font-size: 10px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--cool-muted);
+  }
+  .tile .title {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 17px;
+    letter-spacing: -0.02em;
+    color: var(--teal-dark);
+  }
+  .tile .desc {
+    font-size: 13px;
+    line-height: 1.45;
+    color: var(--cool-muted);
+  }
+  .tile .meta {
+    margin-top: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .tile .arrow {
+    font-family: var(--font-mono);
+    font-weight: 700;
+    font-size: 11px;
+    color: var(--orange-pop);
+    letter-spacing: 0.12em;
+  }
+  .tile .watermark {
+    position: absolute;
+    right: -6px;
+    bottom: -22px;
+    font-family: var(--font-mono);
+    font-weight: 700;
+    font-size: 64px;
+    color: var(--teal-mid);
+    opacity: 0.06;
+    pointer-events: none;
+  }
+
+  /* Flags panel */
+  .flags {
+    background: var(--teal-mist);
+    border-left: 3px solid var(--teal-mid);
+    border-radius: var(--radius-input);
+    padding: 16px 18px;
+    margin-top: 24px;
+  }
+  .flags .lbl {
+    font-family: var(--font-mono);
+    font-weight: 700;
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--teal-mid);
+  }
+  .flags ul { margin: 6px 0 0; padding-left: 18px; }
+  .flags li { font-size: 13px; color: var(--deep-ink); line-height: 1.5; }
+
+  /* Foot */
+  .foot {
+    margin-top: 64px;
+    padding-top: 24px;
+    border-top: 1px solid rgba(0,0,0,0.08);
+    display: flex;
+    justify-content: space-between;
+    font-family: var(--font-mono);
+    font-weight: 700;
+    font-size: 10px;
+    letter-spacing: 0.12em;
+    color: var(--cool-muted);
+    text-transform: uppercase;
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <header class="hero">
+    <div class="num-mark">R³</div>
+    <div class="tag">R³AP · Design System · Modern Studio</div>
+    <h1>R³ Agency Practice</h1>
+    <p class="sub">A guided classroom-culture operating system. Studio Cypher aesthetic — tracks, mixing, equalizers, vinyl, cypher — executed as clean, utilitarian software for educators.</p>
+    <p class="quote">"R³AP helps educators clear the fog in the moment, choose the next grounded move, and build classroom cultures where students can regulate, belong, and grow."</p>
+    <div class="hero-cta">
+      <a class="btn-primary" href="ui_kits/teacher-app/index.html">Open the Teacher UI Kit →</a>
+      <a class="btn-ghost" href="README.md">Read the brand README</a>
+    </div>
+  </header>
+
+  <!-- TOKENS — COLOR -->
+  <section class="section">
+    <div class="section-head">
+      <div>
+        <div class="lbl">Tokens · 01</div>
+        <h2>Color</h2>
+      </div>
+      <p>Teal is architecture, not a flat shade. Orange Pop is reserved for action.</p>
+    </div>
+    <div class="grid">
+      <a class="tile" href="preview/colors-teal-depth.html">
+        <div class="watermark">01</div>
+        <div class="kicker">5-Level Depth</div>
+        <div class="title">Teal Depth System</div>
+        <div class="desc">Deepest → Dark → Mid → Bright → Surface → Mist. Use all levels to build hierarchy.</div>
+        <div class="meta"><span class="arrow">VIEW →</span></div>
+      </a>
+      <a class="tile action" href="preview/colors-signal.html">
+        <div class="watermark">02</div>
+        <div class="kicker">Action + Warning</div>
+        <div class="title">Signal Palette</div>
+        <div class="desc">Orange Pop, Amber, Red Warn, Green Check. Reserved for action and state.</div>
+        <div class="meta"><span class="arrow">VIEW →</span></div>
+      </a>
+      <a class="tile" href="preview/colors-neutrals-tints.html">
+        <div class="watermark">03</div>
+        <div class="kicker">Canvas + Tint</div>
+        <div class="title">Neutrals & Tints</div>
+        <div class="desc">Cool-slate app canvas, pure-white cards, tinted highlights. Never warm or cream.</div>
+        <div class="meta"><span class="arrow">VIEW →</span></div>
+      </a>
+    </div>
+  </section>
+
+  <!-- TOKENS — TYPE -->
+  <section class="section">
+    <div class="section-head">
+      <div>
+        <div class="lbl">Tokens · 02</div>
+        <h2>Typography</h2>
+      </div>
+      <p>Inter Tight + JetBrains Mono + Permanent Marker. That's the whole stack.</p>
+    </div>
+    <div class="grid">
+      <a class="tile" href="preview/type-display-headings.html">
+        <div class="kicker">Inter Tight 800</div>
+        <div class="title">Display + Headings</div>
+        <div class="desc">Hero (44), H2 (28), H3 (20). Tight tracking, sentence case or uppercase hero.</div>
+        <div class="meta"><span class="arrow">VIEW →</span></div>
+      </a>
+      <a class="tile" href="preview/type-body.html">
+        <div class="kicker">Inter Tight 400/500</div>
+        <div class="title">Body Type</div>
+        <div class="desc">16/1.6 line-height. Direct, grounded, action-first copy.</div>
+        <div class="meta"><span class="arrow">VIEW →</span></div>
+      </a>
+      <a class="tile action" href="preview/type-mono-tags.html">
+        <div class="kicker">JetBrains Mono 700</div>
+        <div class="title">Mono Tags</div>
+        <div class="desc">Always UPPERCASE, 0.1em letter-spacing. The studio control-panel voice.</div>
+        <div class="meta"><span class="arrow">VIEW →</span></div>
+      </a>
+      <a class="tile" href="preview/type-metric-marker.html">
+        <div class="kicker">Metric + Marker</div>
+        <div class="title">Metrics & PLURAL</div>
+        <div class="desc">Dashboard metrics in Inter 800. Permanent Marker is PLURAL state ONLY.</div>
+        <div class="meta"><span class="arrow">VIEW →</span></div>
+      </a>
+    </div>
+  </section>
+
+  <!-- TOKENS — SPACING -->
+  <section class="section">
+    <div class="section-head">
+      <div>
+        <div class="lbl">Tokens · 03</div>
+        <h2>Spacing, Radii, Elevation</h2>
+      </div>
+      <p>4/8/12/16/24/32/48/64 spacing. Sharp 6px button radii, 12px cards.</p>
+    </div>
+    <div class="grid">
+      <a class="tile" href="preview/spacing-radii.html">
+        <div class="kicker">4 · 6 · 12 · 16</div>
+        <div class="title">Radii</div>
+        <div class="desc">Tags 4 · buttons/inputs 6 (sharper than typical) · cards 12 · sheets 16.</div>
+        <div class="meta"><span class="arrow">VIEW →</span></div>
+      </a>
+      <a class="tile" href="preview/spacing-elevation.html">
+        <div class="kicker">Elev 0–2 + CTA + Glass</div>
+        <div class="title">Elevation</div>
+        <div class="desc">External, sharp shadows. No inner shadows anywhere.</div>
+        <div class="meta"><span class="arrow">VIEW →</span></div>
+      </a>
+    </div>
+  </section>
+
+  <!-- COMPONENTS -->
+  <section class="section">
+    <div class="section-head">
+      <div>
+        <div class="lbl">Components</div>
+        <h2>Studio Primitives</h2>
+      </div>
+      <p>Buttons, cards, glass, equalizer, vinyl, nav, FAB — the building blocks.</p>
+    </div>
+    <div class="grid">
+      <a class="tile action" href="preview/components-buttons.html">
+        <div class="kicker">Primary · Secondary · Ghost</div>
+        <div class="title">Buttons</div>
+        <div class="desc">Orange → Amber gradient on primary. Ghost only on teal surfaces.</div>
+        <div class="meta"><span class="arrow">VIEW →</span></div>
+      </a>
+      <a class="tile" href="preview/components-cards.html">
+        <div class="kicker">3px Top Accent</div>
+        <div class="title">Card Variants</div>
+        <div class="desc">Standard · Action · Growth · Warn. Each carries a meaning.</div>
+        <div class="meta"><span class="arrow">VIEW →</span></div>
+      </a>
+      <a class="tile" href="preview/components-glass.html">
+        <div class="kicker">Blur 20–24</div>
+        <div class="title">Glass Surfaces</div>
+        <div class="desc">Only used over solid teal heroes and nav. Never over white canvas.</div>
+        <div class="meta"><span class="arrow">VIEW →</span></div>
+      </a>
+      <a class="tile action" href="preview/components-equalizer.html">
+        <div class="kicker">5 Bars · 0.8s</div>
+        <div class="title">Equalizer Pulse</div>
+        <div class="desc">Levels diagnostic. Orange Pop on Teal Dark.</div>
+        <div class="meta"><span class="arrow">VIEW →</span></div>
+      </a>
+      <a class="tile action" href="preview/components-vinyl-now-playing.html">
+        <div class="kicker">Now Playing</div>
+        <div class="title">Vinyl Track</div>
+        <div class="desc">Current Track display — 2rpm rotation, Orange label dot.</div>
+        <div class="meta"><span class="arrow">VIEW →</span></div>
+      </a>
+      <a class="tile" href="preview/components-nav.html">
+        <div class="kicker">Bottom Nav</div>
+        <div class="title">Persistent Nav</div>
+        <div class="desc">Glass panel on Teal Dark. Active tab in Orange Pop.</div>
+        <div class="meta"><span class="arrow">VIEW →</span></div>
+      </a>
+      <a class="tile action" href="preview/components-fab.html">
+        <div class="kicker">Time to Learn</div>
+        <div class="title">FAB</div>
+        <div class="desc">Orange Pop bottom-right on Live + Clear the Fog.</div>
+        <div class="meta"><span class="arrow">VIEW →</span></div>
+      </a>
+      <a class="tile" href="preview/components-inputs-chips.html">
+        <div class="kicker">Inputs · Chips</div>
+        <div class="title">Inputs & Chips</div>
+        <div class="desc">6px radii, tonal chip states, selected = Orange Tint.</div>
+        <div class="meta"><span class="arrow">VIEW →</span></div>
+      </a>
+      <a class="tile action" href="preview/components-rap-card.html">
+        <div class="kicker">R.A.P.</div>
+        <div class="title">Let's R.A.P. About It</div>
+        <div class="desc">Contextual coaching card — Reflect · Aware · Attentive · Purposeful.</div>
+        <div class="meta"><span class="arrow">VIEW →</span></div>
+      </a>
+      <a class="tile action" href="preview/components-script-callouts.html">
+        <div class="kicker">Say / Do Not Say</div>
+        <div class="title">Script Callouts</div>
+        <div class="desc">4px left-border. Orange = SAY THIS. Red = DO NOT SAY (strike-through).</div>
+        <div class="meta"><span class="arrow">VIEW →</span></div>
+      </a>
+      <a class="tile" href="preview/components-morning-pulse.html">
+        <div class="kicker">Calm · Tight · Over</div>
+        <div class="title">Morning Pulse</div>
+        <div class="desc">Three-state regulation check — embedded in Clear the Fog.</div>
+        <div class="meta"><span class="arrow">VIEW →</span></div>
+      </a>
+    </div>
+  </section>
+
+  <!-- BRAND -->
+  <section class="section">
+    <div class="section-head">
+      <div>
+        <div class="lbl">Brand</div>
+        <h2>Wordmark, Imagery, Coaches</h2>
+      </div>
+      <p>The studio aesthetic — high-fidelity 3D coaches, classroom photography, prop renders.</p>
+    </div>
+    <div class="grid">
+      <a class="tile" href="preview/brand-wordmark.html">
+        <div class="kicker">R³AP</div>
+        <div class="title">Wordmark</div>
+        <div class="desc">R-cube + AP signature. Teal Dark + Orange superscript.</div>
+        <div class="meta"><span class="arrow">VIEW →</span></div>
+      </a>
+      <a class="tile amber" href="preview/brand-coach-avatars.html">
+        <div class="kicker">Marlitha · Ray</div>
+        <div class="title">Coach Avatars</div>
+        <div class="desc">3D portraits, four expression states each.</div>
+        <div class="meta"><span class="arrow">VIEW →</span></div>
+      </a>
+      <a class="tile" href="preview/brand-imagery.html">
+        <div class="kicker">Studio + Classroom</div>
+        <div class="title">Brand Imagery</div>
+        <div class="desc">Boombox, vinyl, headphones, mixing board — and educator-in-action photography.</div>
+        <div class="meta"><span class="arrow">VIEW →</span></div>
+      </a>
+      <a class="tile amber" href="preview/brand-mixtape-series.html">
+        <div class="kicker">Concept Series</div>
+        <div class="title">Mixtape Track Art</div>
+        <div class="desc">Concept renders for each track — mixtape-hand, frustration-tape, reflection-mix.</div>
+        <div class="meta"><span class="arrow">VIEW →</span></div>
+      </a>
+      <a class="tile" href="preview/brand-nav-iconography.html">
+        <div class="kicker">10 Icons</div>
+        <div class="title">Nav Iconography</div>
+        <div class="desc">Custom track set — currently placeholder glyphs pending final SVGs.</div>
+        <div class="meta"><span class="arrow">VIEW →</span></div>
+      </a>
+    </div>
+  </section>
+
+  <!-- UI KIT -->
+  <section class="section">
+    <div class="section-head">
+      <div>
+        <div class="lbl">UI Kit</div>
+        <h2>The 10-Track Studio</h2>
+      </div>
+      <p>High-fidelity recreation of the R³AP Teacher app, screen by screen.</p>
+    </div>
+    <div class="grid">
+      <a class="tile action" href="ui_kits/teacher-app/index.html" style="grid-column: span 2;">
+        <div class="watermark">10</div>
+        <div class="kicker">Teacher App · v1</div>
+        <div class="title">Teacher UI Kit</div>
+        <div class="desc">Clear the Fog · Check Your Levels · Load the Track · Live · Liner Notes · The Cypher · Master the Flow. Mobile frames in a single canonical reference.</div>
+        <div class="meta"><span class="arrow">OPEN KIT →</span></div>
+      </a>
+    </div>
+  </section>
+
+  <div class="flags">
+    <div class="lbl">⚠ Open Flags</div>
+    <ul>
+      <li>Custom 10-icon nav set not yet supplied — Lucide / placeholder glyphs in use (see README §4).</li>
+      <li>Graffiti accent words (FLOW · CLEAR · LIVE · REMIX · RAP) referenced but no source art — typographic placeholders only.</li>
+    </ul>
+  </div>
+
+  <div class="foot">
+    <div>R³AP · Modern Studio · Teal Depth + Orange Signal</div>
+    <div>Studio software, not toy.</div>
+  </div>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="../colors_and_type.css">
+<style>
+  html, body { margin: 0; padding: 0; background: linear-gradient(135deg,#0C3645,#092D3A); }
+  body { padding: 24px; min-height: 320px; }
+  .sheet {
+    border-radius: 16px 16px 0 0;
+    background: rgba(26,95,122,0.25);
+    backdrop-filter: blur(24px);
+    border: 1px solid rgba(50,117,140,0.40);
+    padding: 20px;
+    color: #fff;
+    max-width: 640px;
+    margin: 0 auto;
+  }
+  .head { display: flex; gap: 12px; align-items: center; margin-bottom: 12px; }
+  .av { width: 44px; height: 44px; border-radius: 50%; background: var(--teal-mid); display: flex; align-items: center; justify-content: center; font-family: var(--font-display); font-weight: 800; color: #fff; }
+  .ntag { font-family: var(--font-mono); font-size: 10px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--amber); }
+  .title { font-family: var(--font-display); font-weight: 800; font-size: 22px; letter-spacing: -0.02em; }
+  .sect { display: grid; grid-template-columns: 90px 1fr; gap: 12px; padding: 8px 0; border-top: 1px solid rgba(255,255,255,0.08); }
+  .sect .l { font-family: var(--font-mono); font-weight: 700; font-size: 10px; letter-spacing: 0.12em; color: var(--orange-pop); text-transform: uppercase; }
+  .sect .b { font-family: var(--font-body); font-size: 14px; line-height: 1.45; }
+  .row { display: flex; gap: 8px; margin-top: 14px; }
+</style>
+</head>
+<body>
+  <div class="sheet">
+    <div class="head">
+      <div class="av">M</div>
+      <div>
+        <div class="ntag">COACH MARLITHA</div>
+        <div class="title">Let's R.A.P. About It</div>
+      </div>
+    </div>
+    <div class="sect"><div class="l">Reflect</div><div class="b">You logged "Refusing Routine" 4 times this week — all in 7th period.</div></div>
+    <div class="sect"><div class="l">Aware</div><div class="b">What is actually happening right now in 7th period?</div></div>
+    <div class="sect"><div class="l">Attentive</div><div class="b">What is your body doing when 7th walks in?</div></div>
+    <div class="sect"><div class="l">Purposeful</div><div class="b">Run the Entry Routine track in Practice Station before tomorrow.</div></div>
+    <div class="row"><button class="btn-primary">Take Action</button><button class="btn-ghost">Dismiss</button></div>
+  </div>
+</body>
+</html>

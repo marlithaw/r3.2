@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="../colors_and_type.css">
+<style>
+  html, body { margin: 0; padding: 0; background: var(--app-canvas); }
+  body { padding: 24px; display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; }
+  .input {
+    background: #fff;
+    border: 1px solid rgba(0,0,0,0.10);
+    border-radius: 6px;
+    padding: 12px 14px;
+    font-family: var(--font-body);
+    font-size: 14px;
+    color: var(--deep-ink);
+    width: 100%;
+    box-sizing: border-box;
+  }
+  .input:focus { outline: 2px solid var(--orange-pop); outline-offset: -1px; }
+  .field { display: flex; flex-direction: column; gap: 6px; }
+  .field label { font-family: var(--font-mono); font-weight: 700; font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--cool-muted); }
+  .chips { display: flex; gap: 6px; flex-wrap: wrap; }
+  .chip { font-family: var(--font-mono); font-weight: 700; font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; padding: 6px 10px; border-radius: 4px; background: var(--teal-surface); color: var(--teal-mid); cursor: pointer; }
+  .chip.active { background: rgba(255,107,0,0.12); color: var(--orange-pop); box-shadow: inset 0 0 0 1px var(--orange-pop); }
+</style>
+</head>
+<body>
+  <div class="field"><label>Where are you?</label><input class="input" placeholder="Type or tap to answer"></div>
+  <div class="field"><label>Fog source</label>
+    <div class="chips">
+      <span class="chip active">Exhaustion</span>
+      <span class="chip">Outside Stress</span>
+      <span class="chip">Overstim</span>
+      <span class="chip">Boundary</span>
+    </div>
+  </div>
+  <div class="field"><label>Quick Capture · Q1</label>
+    <div class="chips">
+      <span class="chip">Most</span><span class="chip active">Some</span><span class="chip">Few</span>
+    </div>
+  </div>
+  <div class="field"><label>Tone</label>
+    <div class="chips">
+      <span class="chip">Flat</span><span class="chip">Calm</span><span class="chip active">Firm</span><span class="chip">Warm</span>
+    </div>
+  </div>
+</body>
+</html>

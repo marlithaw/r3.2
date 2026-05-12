@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="../colors_and_type.css">
+<style>
+  html, body { margin: 0; padding: 0; background: var(--app-canvas); }
+  body { padding: 24px; display: flex; flex-direction: column; gap: 12px; }
+  .callout { padding: 14px 16px; border-radius: 8px; display: flex; align-items: center; gap: 12px; }
+  .say { background: var(--teal-mist); border-left: 4px solid var(--orange-pop); }
+  .dont { background: rgba(184,66,61,0.08); border-left: 4px solid var(--red-warn); }
+  .next { background: var(--teal-mist); border-left: 4px solid var(--teal-bright); }
+  .label { font-family: var(--font-mono); font-weight: 700; font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; flex: 0 0 110px; }
+  .say .label { color: var(--orange-pop); }
+  .dont .label { color: var(--red-warn); }
+  .next .label { color: var(--teal-bright); }
+  .text { font-family: var(--font-display); font-weight: 600; font-size: 18px; color: var(--deep-ink); }
+  .dont .text { font-family: var(--font-mono); font-weight: 500; font-size: 14px; text-decoration: line-through; color: var(--red-warn); }
+  .next .text { font-style: italic; font-size: 15px; color: var(--teal-mid); }
+</style>
+</head>
+<body>
+  <div class="callout say"><div class="label">Say This</div><div class="text">Your seat is posted. Find it.</div></div>
+  <div class="callout dont"><div class="label">Do Not Say</div><div class="text">Why do you always do this?</div></div>
+  <div class="callout next"><div class="label">Next Move →</div><div class="text">Return attention to the class. Follow up privately.</div></div>
+</body>
+</html>

@@ -1,0 +1,22 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="../colors_and_type.css">
+<style>
+  html, body { margin: 0; padding: 0; background: var(--app-canvas); }
+  body { padding: 24px; display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; }
+  .mini { padding: 16px; }
+  .mini .h { font-family: var(--font-display); font-weight: 700; font-size: 15px; color: var(--teal-dark); margin: 0 0 4px; }
+  .mini .s { font-family: var(--font-body); font-size: 12px; color: var(--cool-muted); }
+  .num { position: absolute; right: 12px; bottom: 4px; font-family: var(--font-mono); font-weight: 700; font-size: 64px; color: var(--teal-mid); opacity: 0.05; pointer-events: none; }
+  .card { position: relative; overflow: hidden; padding: 16px; }
+</style>
+</head>
+<body>
+  <div class="card mini"><div class="num">03</div><div class="h">Standard card</div><div class="s">3px Teal Mid top · default content surface</div></div>
+  <div class="card card-action mini"><div class="num">06</div><div class="h">Action card</div><div class="s">3px Orange top · "Say This" + CTA surfaces</div></div>
+  <div class="card card-growth mini"><div class="num">10</div><div class="h">Growth card</div><div class="s">3px Green top · academic evidence</div></div>
+  <div class="card card-warn mini"><div class="num">!</div><div class="h">Warning card</div><div class="s">3px Red top · alert states only</div></div>
+</body>
+</html>

@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="../colors_and_type.css">
+<style>
+  html, body { margin: 0; padding: 0; background: var(--app-canvas); }
+  body { padding: 24px; }
+  .row { display: flex; gap: 12px; flex-wrap: wrap; }
+  .swatch {
+    flex: 1 1 0;
+    min-height: 96px;
+    border-radius: 8px;
+    padding: 12px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    font-family: var(--font-mono);
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+  .swatch .name { font-size: 11px; }
+  .swatch .role { font-size: 10px; opacity: 0.75; margin-top: 4px; font-family: var(--font-body); text-transform: none; letter-spacing: 0; font-weight: 500; line-height: 1.3; }
+  .swatch .hex { opacity: 0.85; font-size: 10px; }
+</style>
+</head>
+<body>
+<div class="row">
+  <div class="swatch" style="background:#FF6B00;color:#fff">
+    <div><div class="name">Orange Pop</div><div class="role">Primary action · active EQ · Live pulse · progress fill · SAY THIS border</div></div>
+    <div class="hex">#FF6B00</div>
+  </div>
+  <div class="swatch" style="background:#FF9800;color:#1A1A1A">
+    <div><div class="name">Amber</div><div class="role">Secondary · button hover · gradient end · warm accent · track numerals</div></div>
+    <div class="hex">#FF9800</div>
+  </div>
+  <div class="swatch" style="background:#B8423D;color:#fff">
+    <div><div class="name">Red Warn</div><div class="role">Warnings ONLY · DO NOT SAY · errors · critical alert</div></div>
+    <div class="hex">#B8423D</div>
+  </div>
+  <div class="swatch" style="background:#2D7A4F;color:#fff">
+    <div><div class="name">Green Check</div><div class="role">Success · Instruction Protected: Yes · milestone</div></div>
+    <div class="hex">#2D7A4F</div>
+  </div>
+</div>
+</body>
+</html>

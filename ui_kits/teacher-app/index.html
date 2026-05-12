@@ -1,0 +1,480 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>R³AP · Teacher App UI Kit</title>
+<link rel="stylesheet" href="../../colors_and_type.css">
+<style>
+  html, body { margin: 0; padding: 0; background: var(--app-canvas); font-family: var(--font-body); color: var(--deep-ink); }
+  .page { max-width: 1280px; margin: 0 auto; padding: 48px 32px 96px; }
+  .page-head { margin-bottom: 48px; padding-bottom: 24px; border-bottom: 1px solid rgba(0,0,0,0.08); }
+  .page-head .tag { font-family: var(--font-mono); font-weight: 700; font-size: 11px; letter-spacing: 0.14em; color: var(--orange-pop); text-transform: uppercase; }
+  .page-head h1 { font-family: var(--font-display); font-weight: 800; font-size: 56px; letter-spacing: -0.04em; color: var(--teal-dark); margin: 8px 0; }
+  .page-head p { max-width: 720px; color: var(--cool-muted); font-size: 16px; line-height: 1.55; }
+
+  .row { display: grid; grid-template-columns: 240px 1fr; gap: 32px; padding: 24px 0; border-bottom: 1px solid rgba(0,0,0,0.06); align-items: flex-start; }
+  .row-head .num { font-family: var(--font-mono); font-weight: 700; font-size: 11px; letter-spacing: 0.12em; color: var(--cool-muted); text-transform: uppercase; }
+  .row-head h2 { font-family: var(--font-display); font-weight: 800; font-size: 28px; letter-spacing: -0.03em; color: var(--teal-dark); margin: 6px 0 8px; }
+  .row-head p { font-size: 13px; line-height: 1.5; color: var(--cool-muted); margin: 0; }
+
+  .frames { display: flex; gap: 20px; flex-wrap: wrap; }
+
+  /* Phone frame */
+  .phone { width: 320px; height: 640px; background: #0C3645; border-radius: 32px; padding: 12px; box-shadow: 0 24px 48px rgba(9,45,58,0.25), 0 0 0 2px #1A5F7A inset; overflow: hidden; position: relative; flex-shrink: 0; }
+  .screen { width: 100%; height: 100%; border-radius: 22px; background: var(--app-canvas); overflow: hidden; display: flex; flex-direction: column; position: relative; }
+  .status-bar { height: 28px; background: var(--teal-dark); color: #fff; font-family: var(--font-mono); font-size: 10px; font-weight: 700; letter-spacing: 0.1em; padding: 0 14px; display: flex; align-items: center; justify-content: space-between; }
+  .status-bar .l { display: flex; gap: 6px; align-items: center; }
+  .status-bar .dot { width: 6px; height: 6px; border-radius: 50%; background: var(--orange-pop); box-shadow: 0 0 6px rgba(255,107,0,0.7); }
+  .screen-body { flex: 1; overflow: auto; padding-bottom: 64px; }
+  .screen-body::-webkit-scrollbar { display: none; }
+
+  /* Bottom nav */
+  .nav-bar { position: absolute; bottom: 12px; left: 12px; right: 12px; background: rgba(255,255,255,0.10); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); border: 1px solid rgba(255,255,255,0.18); border-radius: 14px; display: grid; grid-template-columns: repeat(5, 1fr); padding: 8px 4px; }
+  .nav-bar .tab { display: flex; flex-direction: column; align-items: center; gap: 2px; padding: 4px; color: #32758C; font-family: var(--font-mono); font-weight: 700; font-size: 7.5px; letter-spacing: 0.08em; text-transform: uppercase; }
+  .nav-bar .tab .ic { font-size: 16px; line-height: 1; }
+  .nav-bar .tab.active { color: var(--orange-pop); }
+
+  /* Generic */
+  .hero { background: var(--teal-dark); color: #fff; padding: 20px 18px 16px; position: relative; overflow: hidden; }
+  .hero .tag { font-family: var(--font-mono); font-weight: 700; font-size: 9px; letter-spacing: 0.14em; color: var(--amber); text-transform: uppercase; }
+  .hero h1 { font-family: var(--font-display); font-weight: 800; font-size: 26px; letter-spacing: -0.03em; margin: 6px 0 4px; text-transform: uppercase; line-height: 1.05; }
+  .hero p { font-family: var(--font-body); font-size: 12px; color: rgba(255,255,255,0.7); margin: 0; line-height: 1.4; }
+
+  .sect { padding: 14px 16px; }
+  .sect-h { font-family: var(--font-mono); font-weight: 700; font-size: 9px; letter-spacing: 0.14em; color: var(--cool-muted); text-transform: uppercase; margin-bottom: 8px; }
+
+  .ucard { background: #fff; border: 1px solid rgba(0,0,0,0.06); border-top: 3px solid var(--teal-mid); border-radius: 10px; padding: 12px; box-shadow: var(--elev-1); }
+  .ucard.action { border-top-color: var(--orange-pop); }
+  .ucard.growth { border-top-color: var(--green-check); }
+  .ucard.warn { border-top-color: var(--red-warn); }
+
+  .pill { font-family: var(--font-mono); font-weight: 700; font-size: 9px; letter-spacing: 0.1em; text-transform: uppercase; padding: 3px 7px; border-radius: 3px; display: inline-block; }
+  .pill-teal { background: var(--teal-surface); color: var(--teal-mid); }
+  .pill-orange { background: rgba(255,107,0,0.12); color: var(--orange-pop); }
+  .pill-amber { background: rgba(255,152,0,0.15); color: #8a4a00; }
+  .pill-green { background: rgba(45,122,79,0.14); color: var(--green-check); }
+  .pill-red { background: rgba(184,66,61,0.10); color: var(--red-warn); }
+
+  /* Screen 01 Fog */
+  .glass-mini { background: rgba(255,255,255,0.08); backdrop-filter: blur(12px); border: 1px solid rgba(255,255,255,0.18); border-radius: 10px; padding: 12px; }
+  .prompt-list { display: flex; flex-direction: column; gap: 6px; }
+  .prompt { background: var(--teal-surface); color: var(--teal-dark); border-radius: 4px; padding: 7px 10px; font-size: 11px; font-weight: 500; }
+  .fog-tags { display: flex; flex-wrap: wrap; gap: 5px; }
+  .fog-tag { padding: 4px 8px; border-radius: 3px; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.18); color: rgba(255,255,255,0.78); font-family: var(--font-mono); font-weight: 700; font-size: 8.5px; letter-spacing: 0.1em; text-transform: uppercase; }
+  .fog-tag.on { background: rgba(255,107,0,0.18); border-color: var(--orange-pop); color: var(--orange-pop); }
+
+  .pulse-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 6px; margin-top: 8px; }
+  .pulse { padding: 10px 6px; border-radius: 8px; text-align: center; }
+  .pulse .l { font-family: var(--font-mono); font-weight: 700; font-size: 11px; letter-spacing: 0.05em; }
+  .pulse.calm { background: var(--teal-mid); color: #fff; }
+  .pulse.tight { background: var(--amber); color: #1A1A1A; }
+  .pulse.over { background: var(--orange-pop); color: #fff; }
+
+  .cta-row { padding: 0 16px 12px; }
+  .cta-row .btn-primary { width: 100%; }
+
+  /* Screen 02 Equalizer */
+  .eq { display: flex; gap: 8px; align-items: flex-end; justify-content: center; height: 80px; margin-bottom: 10px; }
+  .eq .b { width: 12px; background: var(--orange-pop); border-radius: 2px; animation: eqp 0.8s ease-in-out infinite; }
+  .eq .b:nth-child(1){ height:40%; animation-delay:0s; }
+  .eq .b:nth-child(2){ height:65%; animation-delay:.12s; }
+  .eq .b:nth-child(3){ height:95%; animation-delay:.24s; }
+  .eq .b:nth-child(4){ height:55%; animation-delay:.36s; }
+  .eq .b:nth-child(5){ height:80%; animation-delay:.48s; }
+  @keyframes eqp { 0%,100%{transform:scaleY(1);opacity:1;} 50%{transform:scaleY(0.5);opacity:0.65;} }
+  .slider { display: grid; grid-template-columns: 90px 1fr 36px; gap: 8px; align-items: center; padding: 6px 0; }
+  .slider .lbl { font-family: var(--font-mono); font-weight: 700; font-size: 9px; letter-spacing: 0.1em; color: var(--cool-muted); text-transform: uppercase; }
+  .slider .track { height: 6px; background: var(--teal-surface); border-radius: 3px; position: relative; overflow: hidden; }
+  .slider .fill { position: absolute; left: 0; top: 0; bottom: 0; background: linear-gradient(90deg, var(--orange-pop), var(--amber)); }
+  .slider .val { font-family: var(--font-mono); font-weight: 700; font-size: 10px; color: var(--amber); text-align: right; }
+
+  /* Screen 03 Vinyl */
+  .vinyl-wrap { display: flex; align-items: center; gap: 14px; padding: 14px 16px; background: var(--teal-dark); color: #fff; }
+  .vinyl { width: 80px; height: 80px; border-radius: 50%; background: repeating-radial-gradient(circle, #1A1A1A 0 1px, #2a2a2a 1px 3px), #1A1A1A; position: relative; animation: spin 30s linear infinite; flex-shrink: 0; box-shadow: 0 4px 16px rgba(9,45,58,0.5); }
+  .vinyl::after { content: ""; position: absolute; inset: 30%; border-radius: 50%; background: var(--teal-mid); }
+  .vinyl::before { content: ""; position: absolute; left: 50%; top: 50%; width: 8px; height: 8px; margin: -4px 0 0 -4px; border-radius: 50%; background: var(--orange-pop); z-index: 2; }
+  @keyframes spin { to { transform: rotate(360deg); } }
+  .vinyl-meta .lbl { font-family: var(--font-mono); font-weight: 700; font-size: 9px; letter-spacing: 0.14em; color: var(--orange-pop); text-transform: uppercase; }
+  .vinyl-meta .name { font-family: var(--font-display); font-weight: 800; font-size: 17px; letter-spacing: -0.02em; margin: 2px 0; }
+  .vinyl-meta .sub { font-size: 11px; color: rgba(255,255,255,0.7); }
+  .vinyl-meta .badge { display: inline-block; margin-top: 4px; padding: 2px 6px; background: rgba(255,107,0,0.18); color: var(--orange-pop); border-radius: 3px; font-family: var(--font-mono); font-weight: 700; font-size: 8px; letter-spacing: 0.1em; }
+
+  .track-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+  .track-card { background: #fff; border: 1px solid rgba(0,0,0,0.06); border-top: 3px solid var(--teal-mid); border-radius: 8px; padding: 10px; position: relative; overflow: hidden; }
+  .track-card .num { position: absolute; right: 4px; bottom: -8px; font-family: var(--font-mono); font-weight: 700; font-size: 44px; color: var(--teal-mid); opacity: 0.08; }
+  .track-card .name { font-family: var(--font-display); font-weight: 700; font-size: 12px; color: var(--teal-dark); letter-spacing: -0.01em; }
+  .track-card .meta { margin-top: 6px; display: flex; gap: 4px; }
+  .diff { display: inline-flex; gap: 2px; }
+  .diff i { width: 4px; height: 4px; border-radius: 1px; background: var(--teal-surface); }
+  .diff i.on { background: var(--orange-pop); }
+
+  /* Live */
+  .live-screen { background: linear-gradient(160deg, #092D3A, #0C3645); color: #fff; padding: 14px 14px 12px; height: 100%; box-sizing: border-box; }
+  .live-status { display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; }
+  .live-status .l { font-family: var(--font-mono); font-weight: 700; font-size: 10px; letter-spacing: 0.14em; color: var(--orange-pop); display: flex; align-items: center; gap: 5px; }
+  .live-status .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--orange-pop); box-shadow: 0 0 0 0 rgba(255,107,0,0.6); animation: live-pulse 1.2s ease-in-out infinite; }
+  @keyframes live-pulse { 0%,100% { box-shadow: 0 0 0 0 rgba(255,107,0,0.6); } 50% { box-shadow: 0 0 0 8px rgba(255,107,0,0); } }
+  .live-status .r { font-family: var(--font-mono); font-size: 9px; color: rgba(255,255,255,0.7); letter-spacing: 0.1em; text-transform: uppercase; }
+  .live-card { background: rgba(26,95,122,0.30); backdrop-filter: blur(16px); border: 1px solid rgba(50,117,140,0.45); border-radius: 12px; padding: 14px; box-shadow: 0 4px 24px rgba(9,45,58,0.4); }
+  .live-card .pat { font-family: var(--font-mono); font-weight: 700; font-size: 9px; letter-spacing: 0.12em; padding: 3px 7px; border-radius: 3px; background: rgba(255,107,0,0.18); color: var(--orange-pop); display: inline-block; text-transform: uppercase; margin-bottom: 10px; }
+  .live-zone { padding: 10px 0; border-top: 1px solid rgba(255,255,255,0.08); }
+  .live-zone:first-of-type { border-top: 0; padding-top: 0; }
+  .live-zone .l { font-family: var(--font-mono); font-weight: 700; font-size: 9px; letter-spacing: 0.14em; text-transform: uppercase; }
+  .live-zone.say .l { color: var(--orange-pop); }
+  .live-zone.dont .l { color: var(--red-warn); }
+  .live-zone.next .l { color: var(--teal-bright); }
+  .live-zone.ret .l { color: var(--amber); }
+  .live-zone.say .t { font-family: var(--font-display); font-weight: 600; font-size: 16px; color: #fff; line-height: 1.25; border-left: 3px solid var(--orange-pop); padding-left: 10px; margin-top: 5px; }
+  .live-zone.dont .t { font-family: var(--font-mono); font-size: 11px; color: rgba(184,66,61,0.95); text-decoration: line-through; border-left: 3px solid var(--red-warn); padding-left: 10px; margin-top: 5px; }
+  .live-zone.next .t { font-family: var(--font-body); font-size: 12px; color: rgba(255,255,255,0.86); margin-top: 4px; }
+  .live-zone.ret .t { font-family: var(--font-body); font-style: italic; font-size: 11px; color: rgba(255,255,255,0.72); margin-top: 4px; }
+  .live-fab { position: absolute; right: 18px; top: 36px; width: 44px; height: 44px; border-radius: 50%; background: var(--action-grad); box-shadow: 0 6px 14px rgba(255,107,0,0.35); color: #fff; font-family: var(--font-mono); font-weight: 700; font-size: 8px; letter-spacing: 0.06em; display: flex; align-items: center; justify-content: center; text-transform: uppercase; line-height: 1.1; text-align: center; padding: 4px; box-sizing: border-box; }
+
+  /* Liner Notes */
+  .voice-btn { width: 56px; height: 56px; border-radius: 50%; background: var(--action-grad); color: #fff; display: flex; align-items: center; justify-content: center; font-size: 22px; margin: 4px auto 12px; box-shadow: 0 6px 16px rgba(255,107,0,0.35); }
+  .wave-strip { background: var(--teal-dark); border-radius: 6px; padding: 10px 8px; display: flex; gap: 3px; align-items: center; justify-content: center; height: 32px; }
+  .wave-strip .b { width: 3px; background: var(--orange-pop); border-radius: 2px; }
+  .pmt { background: var(--teal-mist); border-left: 2px solid var(--teal-mid); border-radius: 4px; padding: 8px 10px; font-size: 11px; color: var(--deep-ink); margin-bottom: 5px; }
+  .pmt strong { font-family: var(--font-mono); font-weight: 700; font-size: 9px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--teal-mid); display: block; margin-bottom: 2px; }
+
+  /* Cypher */
+  .feed-card { background: #fff; border: 1px solid rgba(0,0,0,0.06); border-top: 3px solid var(--teal-mid); border-radius: 10px; padding: 12px; margin-bottom: 8px; }
+  .feed-card .head { display: flex; align-items: center; gap: 8px; margin-bottom: 8px; }
+  .feed-card .av { width: 28px; height: 28px; border-radius: 50%; background: var(--teal-mid); }
+  .feed-card .who { font-family: var(--font-display); font-weight: 700; font-size: 12px; color: var(--teal-dark); }
+  .feed-card .meta { font-family: var(--font-mono); font-size: 8px; letter-spacing: 0.1em; color: var(--cool-muted); text-transform: uppercase; }
+  .feed-card .body { font-size: 12px; line-height: 1.4; }
+  .feed-card .reactions { display: flex; gap: 8px; margin-top: 8px; font-family: var(--font-mono); font-size: 9px; font-weight: 700; color: var(--cool-muted); letter-spacing: 0.06em; text-transform: uppercase; }
+  .broadcast { background: var(--teal-deepest); color: #fff; border-radius: 10px; padding: 12px; border-left: 4px solid var(--orange-pop); margin-bottom: 8px; }
+  .broadcast .lbl { font-family: var(--font-mono); font-weight: 700; font-size: 9px; letter-spacing: 0.12em; color: var(--amber); text-transform: uppercase; }
+  .broadcast .who { font-family: var(--font-display); font-weight: 700; font-size: 13px; margin: 4px 0; }
+  .broadcast .body { font-size: 12px; line-height: 1.4; color: rgba(255,255,255,0.85); }
+
+  /* Master flow dashboard */
+  .dash-bg { background: linear-gradient(170deg, #092D3A, #0C3645); padding: 18px 16px; color: #fff; }
+  .metric-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-top: 12px; }
+  .metric-card { background: rgba(26,95,122,0.30); border: 1px solid rgba(50,117,140,0.40); border-radius: 10px; padding: 12px; backdrop-filter: blur(12px); }
+  .metric-card .l { font-family: var(--font-mono); font-weight: 700; font-size: 8px; letter-spacing: 0.12em; color: rgba(255,255,255,0.7); text-transform: uppercase; }
+  .metric-card .v { font-family: var(--font-display); font-weight: 800; font-size: 28px; color: var(--orange-pop); margin-top: 4px; letter-spacing: -0.03em; font-variant-numeric: tabular-nums; }
+  .metric-card .d { font-family: var(--font-mono); font-weight: 700; font-size: 9px; color: var(--green-check); letter-spacing: 0.06em; margin-top: 2px; }
+  .plural-card { background: rgba(255,152,0,0.10); border: 1px solid rgba(255,152,0,0.35); border-radius: 10px; padding: 14px; text-align: center; margin: 10px 16px; }
+  .plural-card .lbl { font-family: var(--font-mono); font-weight: 700; font-size: 9px; letter-spacing: 0.14em; color: var(--amber); text-transform: uppercase; }
+  .plural-card .h { font-family: var(--font-marker); color: var(--teal-dark); font-size: 22px; line-height: 1.15; margin: 6px 0 4px; }
+  .plural-card .s { font-size: 11px; color: var(--cool-muted); }
+</style>
+</head>
+<body>
+<div class="page">
+  <header class="page-head">
+    <div class="tag">R³AP · TEACHER APP · UI KIT v1</div>
+    <h1>The 10-Track Studio</h1>
+    <p>High-fidelity recreation of the R³AP Teacher app, screen by screen. Mobile-first (375px). Token-bound — every surface, border, color, and font comes from <code>colors_and_type.css</code>. Use these frames as the canonical reference when designing new screens or variants.</p>
+  </header>
+
+  <!-- 01 Clear the Fog -->
+  <section class="row">
+    <div class="row-head"><div class="num">Track 01 · Orientation</div><h2>Clear the Fog</h2><p>What is actually happening right now, and what needs my focus? Fog-source multi-select + embedded Morning Pulse.</p></div>
+    <div class="frames">
+      <div class="phone"><div class="screen">
+        <div class="status-bar"><div class="l"><span class="dot"></span>R³AP · LIVE</div><div>9:41</div></div>
+        <div class="screen-body">
+          <div class="hero">
+            <div class="tag">SCREEN 01 · ORIENTATION</div>
+            <h1>Clear the Fog</h1>
+            <p>Orient before you react. Name what's actually in the room.</p>
+          </div>
+          <div class="sect">
+            <div class="sect-h">Orientation Scan</div>
+            <div class="glass-mini" style="background:var(--teal-mist);border-color:rgba(0,0,0,0.06);backdrop-filter:none;">
+              <div class="prompt-list">
+                <div class="prompt">Where are you?</div>
+                <div class="prompt">What is happening?</div>
+                <div class="prompt">Who is involved?</div>
+                <div class="prompt">What is the immediate demand?</div>
+                <div class="prompt">What needs focus right now?</div>
+              </div>
+            </div>
+          </div>
+          <div class="sect" style="background:var(--teal-dark);margin: 0 16px;border-radius:10px;padding:12px;">
+            <div style="font-family:var(--font-mono);font-weight:700;font-size:9px;letter-spacing:0.14em;color:var(--amber);text-transform:uppercase;margin-bottom:8px;">Fog Source</div>
+            <div class="fog-tags">
+              <span class="fog-tag on">Exhaustion</span>
+              <span class="fog-tag">Overstim</span>
+              <span class="fog-tag on">Outside Stress</span>
+              <span class="fog-tag">Residue</span>
+              <span class="fog-tag">Burnout</span>
+              <span class="fog-tag">Boundary</span>
+            </div>
+          </div>
+          <div class="sect">
+            <div class="sect-h">Morning Pulse</div>
+            <div class="pulse-row">
+              <div class="pulse calm"><div class="l">CALM</div></div>
+              <div class="pulse tight"><div class="l">TIGHT</div></div>
+              <div class="pulse over"><div class="l">OVER</div></div>
+            </div>
+          </div>
+          <div class="cta-row"><button class="btn-primary">I'm Oriented · Check Levels →</button></div>
+        </div>
+        <div class="nav-bar">
+          <div class="tab active"><div class="ic">◌</div><div>Fog</div></div>
+          <div class="tab"><div class="ic">▌▐</div><div>Levels</div></div>
+          <div class="tab"><div class="ic">●</div><div>Track</div></div>
+          <div class="tab"><div class="ic">✎</div><div>Notes</div></div>
+          <div class="tab"><div class="ic">⌇</div><div>Flow</div></div>
+        </div>
+      </div></div>
+
+      <!-- 02 Levels -->
+      <div class="phone"><div class="screen">
+        <div class="status-bar"><div class="l"><span class="dot"></span>R³AP · LIVE</div><div>9:42</div></div>
+        <div class="screen-body">
+          <div class="hero" style="text-align:center;padding-bottom:18px;">
+            <div class="tag">SCREEN 02 · DIAGNOSTIC</div>
+            <div class="eq" style="margin:12px auto 8px;"><div class="b"></div><div class="b"></div><div class="b"></div><div class="b"></div><div class="b"></div></div>
+            <h1 style="font-size:22px;">Check Your Levels</h1>
+            <p>What does your classroom need right now?</p>
+          </div>
+          <div class="sect">
+            <div class="ucard">
+              <div class="slider"><div class="lbl">Grade Band</div><div class="track"><div class="fill" style="width:75%"></div></div><div class="val">G7</div></div>
+              <div class="slider"><div class="lbl">Routine</div><div class="track"><div class="fill" style="width:45%"></div></div><div class="val">45</div></div>
+              <div class="slider"><div class="lbl">Student</div><div class="track"><div class="fill" style="width:80%"></div></div><div class="val">80</div></div>
+              <div class="slider"><div class="lbl">Teacher</div><div class="track"><div class="fill" style="width:60%"></div></div><div class="val">60</div></div>
+              <div class="slider"><div class="lbl">Urgency</div><div class="track"><div class="fill" style="width:90%"></div></div><div class="val">90</div></div>
+            </div>
+          </div>
+          <div class="sect">
+            <div class="ucard action" style="position:relative;overflow:hidden;">
+              <div style="font-family:var(--font-mono);font-weight:700;font-size:8px;letter-spacing:0.14em;color:var(--orange-pop);text-transform:uppercase;">Recommendation</div>
+              <div style="font-family:var(--font-display);font-weight:700;font-size:14px;color:var(--teal-dark);margin-top:4px;line-height:1.3;">Your next move is <span style="color:var(--orange-pop)">Practice Station → Refusing Routine</span></div>
+              <div style="position:absolute;right:6px;bottom:-12px;font-family:var(--font-mono);font-weight:700;font-size:58px;color:var(--teal-mid);opacity:0.06;">05</div>
+            </div>
+          </div>
+          <div class="cta-row" style="display:flex;gap:6px;">
+            <button class="btn-primary" style="flex:1;padding:10px;font-size:13px;">Go There Now</button>
+            <button class="btn-secondary" style="padding:10px 14px;font-size:13px;">Override</button>
+          </div>
+        </div>
+        <div class="nav-bar">
+          <div class="tab"><div class="ic">◌</div><div>Fog</div></div>
+          <div class="tab active"><div class="ic">▌▐</div><div>Levels</div></div>
+          <div class="tab"><div class="ic">●</div><div>Track</div></div>
+          <div class="tab"><div class="ic">✎</div><div>Notes</div></div>
+          <div class="tab"><div class="ic">⌇</div><div>Flow</div></div>
+        </div>
+      </div></div>
+
+      <!-- 03 Load the Track -->
+      <div class="phone"><div class="screen">
+        <div class="status-bar"><div class="l"><span class="dot"></span>R³AP · LIVE</div><div>9:43</div></div>
+        <div class="screen-body">
+          <div class="vinyl-wrap">
+            <div class="vinyl"></div>
+            <div class="vinyl-meta">
+              <div class="lbl">● NOW PLAYING · TRACK 03</div>
+              <div class="name">Entry Routine</div>
+              <div class="sub">Grade 7 · 12 days in</div>
+              <div class="badge">● ACTIVE</div>
+            </div>
+          </div>
+          <div class="sect">
+            <div class="sect-h">Track Library</div>
+            <div class="track-grid">
+              <div class="track-card"><div class="num">04</div><span class="pill pill-teal">G7</span><div class="name" style="margin-top:6px;">Assigned Seat Follow-Through</div><div class="meta"><div class="diff"><i class="on"></i><i class="on"></i><i></i></div></div></div>
+              <div class="track-card"><div class="num">05</div><span class="pill pill-teal">G6-7</span><div class="name" style="margin-top:6px;">IXL Movement System</div><div class="meta"><div class="diff"><i class="on"></i><i></i><i></i></div></div></div>
+              <div class="track-card"><div class="num">06</div><span class="pill pill-teal">G7-8</span><div class="name" style="margin-top:6px;">Profanity Response</div><div class="meta"><div class="diff"><i class="on"></i><i class="on"></i><i class="on"></i></div></div></div>
+              <div class="track-card"><div class="num">07</div><span class="pill pill-teal">G6</span><div class="name" style="margin-top:6px;">Task Avoidance</div><div class="meta"><div class="diff"><i class="on"></i><i class="on"></i><i></i></div></div></div>
+              <div class="track-card"><div class="num">08</div><span class="pill pill-teal">G7</span><div class="name" style="margin-top:6px;">Repair Conversation</div><div class="meta"><div class="diff"><i class="on"></i><i class="on"></i><i></i></div></div></div>
+              <div class="track-card"><div class="num">09</div><span class="pill pill-teal">G5-8</span><div class="name" style="margin-top:6px;">Exit Ticket Routine</div><div class="meta"><div class="diff"><i class="on"></i><i></i><i></i></div></div></div>
+            </div>
+          </div>
+          <div class="cta-row"><button class="btn-primary">Load This Track</button></div>
+        </div>
+        <div class="nav-bar">
+          <div class="tab"><div class="ic">◌</div><div>Fog</div></div>
+          <div class="tab"><div class="ic">▌▐</div><div>Levels</div></div>
+          <div class="tab active"><div class="ic">●</div><div>Track</div></div>
+          <div class="tab"><div class="ic">✎</div><div>Notes</div></div>
+          <div class="tab"><div class="ic">⌇</div><div>Flow</div></div>
+        </div>
+      </div></div>
+    </div>
+  </section>
+
+  <!-- 06 Live -->
+  <section class="row">
+    <div class="row-head"><div class="num">Track 06 · Highest Urgency</div><h2>Live</h2><p>One screen. Six zones. No scroll. Pulsing mic, six callouts, and the Time-to-Learn FAB top-right.</p></div>
+    <div class="frames">
+      <div class="phone"><div class="screen" style="background:#0C3645;">
+        <div class="status-bar"><div class="l"><span class="dot"></span>R³AP · LIVE</div><div>2:18 PM</div></div>
+        <div class="screen-body">
+          <div class="live-screen">
+            <div class="live-fab">START<br>INSTR</div>
+            <div class="live-status">
+              <div class="l"><span class="dot"></span>● LIVE</div>
+              <div class="r">Track 06 · 4th period</div>
+            </div>
+            <div class="live-card">
+              <span class="pat">REFUSING ROUTINE</span>
+              <div class="live-zone say">
+                <div class="l">Say This</div>
+                <div class="t">Your seat is posted. Find it.</div>
+              </div>
+              <div class="live-zone dont">
+                <div class="l">Do Not Say</div>
+                <div class="t">Why do you always do this?</div>
+              </div>
+              <div class="live-zone next">
+                <div class="l">Next Move →</div>
+                <div class="t">Return attention to the class. Follow up privately when the room is moving.</div>
+              </div>
+              <div class="live-zone ret">
+                <div class="l">Return to Instruction</div>
+                <div class="t">Begin with the students who are ready.</div>
+              </div>
+              <div class="live-zone" style="border-top:1px solid rgba(255,255,255,0.08);padding-top:10px;">
+                <button class="btn-ghost" style="font-size:11px;padding:7px 12px;border-radius:5px;">Capture This ✎</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="nav-bar">
+          <div class="tab"><div class="ic">◌</div><div>Fog</div></div>
+          <div class="tab"><div class="ic">●</div><div>Track</div></div>
+          <div class="tab active"><div class="ic">🎙</div><div>Live</div></div>
+          <div class="tab"><div class="ic">✎</div><div>Notes</div></div>
+          <div class="tab"><div class="ic">⌇</div><div>Flow</div></div>
+        </div>
+      </div></div>
+
+      <!-- 07 Liner Notes -->
+      <div class="phone"><div class="screen">
+        <div class="status-bar"><div class="l"><span class="dot"></span>R³AP · LIVE</div><div>2:48 PM</div></div>
+        <div class="screen-body">
+          <div class="hero">
+            <div class="tag">SCREEN 07 · CAPTURE</div>
+            <h1 style="font-size:22px;">Liner Notes</h1>
+            <p>Capture what happened before the moment disappears.</p>
+          </div>
+          <div class="sect">
+            <div style="display:flex;align-items:center;gap:10px;background:var(--teal-dark);padding:10px;border-radius:10px;">
+              <div class="voice-btn" style="margin:0;width:44px;height:44px;font-size:18px;">●</div>
+              <div style="flex:1;"><div class="wave-strip" style="background:transparent;justify-content:flex-start;">
+                <div class="b" style="height:30%"></div><div class="b" style="height:60%"></div><div class="b" style="height:90%"></div><div class="b" style="height:50%"></div><div class="b" style="height:75%"></div><div class="b" style="height:40%"></div><div class="b" style="height:80%"></div><div class="b" style="height:55%"></div><div class="b" style="height:65%"></div><div class="b" style="height:35%"></div><div class="b" style="height:70%"></div>
+              </div></div>
+            </div>
+          </div>
+          <div class="sect">
+            <div class="sect-h">Structured Prompts</div>
+            <div class="pmt"><strong>What happened?</strong>4th period — Marcus refused to sit. Said his seat was "stupid."</div>
+            <div class="pmt"><strong>What did I say?</strong>"Your seat is posted. Find it." Held the line.</div>
+            <div class="pmt"><strong>Return to track?</strong>Yes — class started in under 4 min.</div>
+          </div>
+          <div class="sect">
+            <div class="sect-h">Quick Capture</div>
+            <div class="ucard action">
+              <div style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:8px;">
+                <span class="pill pill-teal">Most</span><span class="pill pill-orange">Some</span><span class="pill pill-teal">Few</span>
+              </div>
+              <div style="font-family:var(--font-mono);font-size:9px;color:var(--cool-muted);letter-spacing:0.08em;text-transform:uppercase;">Task Completion</div>
+            </div>
+          </div>
+        </div>
+        <div class="nav-bar">
+          <div class="tab"><div class="ic">◌</div><div>Fog</div></div>
+          <div class="tab"><div class="ic">●</div><div>Track</div></div>
+          <div class="tab"><div class="ic">🎙</div><div>Live</div></div>
+          <div class="tab active"><div class="ic">✎</div><div>Notes</div></div>
+          <div class="tab"><div class="ic">⌇</div><div>Flow</div></div>
+        </div>
+      </div></div>
+
+      <!-- 09 Cypher -->
+      <div class="phone"><div class="screen">
+        <div class="status-bar"><div class="l"><span class="dot"></span>R³AP · LIVE</div><div>3:12 PM</div></div>
+        <div class="screen-body">
+          <div class="hero">
+            <div class="tag">SCREEN 09 · COMMUNITY</div>
+            <h1 style="font-size:22px;">The Cypher</h1>
+            <p>Bring your track. Share the practice.</p>
+          </div>
+          <div class="sect">
+            <div class="broadcast">
+              <div class="lbl">★ MONDAY DROP · COACH MARLITHA</div>
+              <div class="who">This week we're working on…</div>
+              <div class="body">Entry routines. Tight, clean, under 4 minutes. Bring your reps to the cypher.</div>
+            </div>
+            <div class="feed-card">
+              <div class="head">
+                <div class="av"></div>
+                <div><div class="who">Ms. Howard</div><div class="meta">G7 · DAY 12</div></div>
+              </div>
+              <div class="body">Class hit readiness in 3:40 today. The "your seat is posted" line is doing real work.</div>
+              <div class="reactions"><span>♡ 14 helped</span><span>↺ 6 trying</span><span>💬 4</span></div>
+            </div>
+            <div class="feed-card" style="border-top-color: var(--orange-pop);">
+              <div class="head">
+                <div class="av" style="background:var(--amber);"></div>
+                <div><div class="who">Mr. Cardenas</div><div class="meta">G8 · BORROW THIS</div></div>
+              </div>
+              <div class="body" style="font-family:var(--font-mono);font-size:11px;letter-spacing:0.05em;">"Take your three breaths. Then your seat. Then your pencil." — used for re-entry.</div>
+              <div class="reactions"><span>↺ 9 trying</span></div>
+            </div>
+          </div>
+        </div>
+        <div class="nav-bar">
+          <div class="tab"><div class="ic">◌</div><div>Fog</div></div>
+          <div class="tab"><div class="ic">●</div><div>Track</div></div>
+          <div class="tab"><div class="ic">🎙</div><div>Live</div></div>
+          <div class="tab active"><div class="ic">◯</div><div>Cypher</div></div>
+          <div class="tab"><div class="ic">⌇</div><div>Flow</div></div>
+        </div>
+      </div></div>
+    </div>
+  </section>
+
+  <!-- Master Flow -->
+  <section class="row">
+    <div class="row-head"><div class="num">Track 10 · Proof</div><h2>Master the Flow</h2><p>Long-term dashboard. Time-to-readiness trend, redirect reduction, academic evidence, and the PLURAL State unlock.</p></div>
+    <div class="frames">
+      <div class="phone"><div class="screen" style="background:#092D3A;">
+        <div class="status-bar"><div class="l"><span class="dot"></span>R³AP · LIVE</div><div>4:02 PM</div></div>
+        <div class="screen-body">
+          <div class="dash-bg">
+            <div style="font-family:var(--font-mono);font-weight:700;font-size:9px;letter-spacing:0.14em;color:var(--amber);text-transform:uppercase;">SCREEN 10 · MASTER THE FLOW</div>
+            <div style="font-family:var(--font-display);font-weight:800;font-size:22px;letter-spacing:-0.03em;color:#fff;margin-top:4px;">The new response is the new rhythm.</div>
+            <div class="metric-grid">
+              <div class="metric-card"><div class="l">Time to Readiness</div><div class="v">3:40</div><div class="d">▼ 4:20 vs Wk 1</div></div>
+              <div class="metric-card"><div class="l">Redirects · Week</div><div class="v">12</div><div class="d">▼ 19 vs last mo</div></div>
+              <div class="metric-card"><div class="l">Time Protected</div><div class="v">42m</div><div class="d">▲ recovered</div></div>
+              <div class="metric-card"><div class="l">Participation</div><div class="v">88%</div><div class="d">▲ +18%</div></div>
+            </div>
+          </div>
+          <div class="plural-card">
+            <div class="lbl">★ PLURAL STATE UNLOCKED</div>
+            <div class="h">"The new response is the new rhythm."</div>
+            <div class="s">12 days · sustained · academic evidence confirmed</div>
+          </div>
+          <div class="sect">
+            <div class="sect-h">Academic Evidence</div>
+            <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:6px;">
+              <div class="ucard growth" style="padding:8px;"><div style="font-family:var(--font-mono);font-size:8px;letter-spacing:0.1em;color:var(--cool-muted);text-transform:uppercase;">Work</div><div style="font-family:var(--font-display);font-weight:800;font-size:16px;color:var(--green-check);margin-top:2px;">+22%</div></div>
+              <div class="ucard growth" style="padding:8px;"><div style="font-family:var(--font-mono);font-size:8px;letter-spacing:0.1em;color:var(--cool-muted);text-transform:uppercase;">Target Skill</div><div style="font-family:var(--font-display);font-weight:800;font-size:16px;color:var(--green-check);margin-top:2px;">+15%</div></div>
+              <div class="ucard growth" style="padding:8px;"><div style="font-family:var(--font-mono);font-size:8px;letter-spacing:0.1em;color:var(--cool-muted);text-transform:uppercase;">Exit Ticket</div><div style="font-family:var(--font-display);font-weight:800;font-size:16px;color:var(--green-check);margin-top:2px;">+12%</div></div>
+            </div>
+          </div>
+        </div>
+        <div class="nav-bar">
+          <div class="tab"><div class="ic">◌</div><div>Fog</div></div>
+          <div class="tab"><div class="ic">●</div><div>Track</div></div>
+          <div class="tab"><div class="ic">🎙</div><div>Live</div></div>
+          <div class="tab"><div class="ic">◯</div><div>Cypher</div></div>
+          <div class="tab active"><div class="ic">⌇</div><div>Flow</div></div>
+        </div>
+      </div></div>
+    </div>
+  </section>
+</div>
+</body>
+</html>

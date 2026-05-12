@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="../colors_and_type.css">
+<style>
+  html, body { margin: 0; padding: 0; background: var(--app-canvas); }
+  body { padding: 24px; display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; }
+  .tile { aspect-ratio: 3 / 4; border-radius: 10px; background-size: cover; background-position: center; overflow: hidden; box-shadow: var(--elev-1); position: relative; }
+  .tile::after { content: attr(data-label); position: absolute; left: 8px; bottom: 8px; background: rgba(9,45,58,0.82); color: #fff; font-family: var(--font-mono); font-weight: 700; font-size: 9px; letter-spacing: 0.1em; text-transform: uppercase; padding: 3px 7px; border-radius: 3px; }
+</style>
+</head>
+<body>
+  <div class="tile" style="background-image:url('../assets/boombox-love.png')" data-label="Boombox Love"></div>
+  <div class="tile" style="background-image:url('../assets/mixtape-hand.png')" data-label="Mixtape"></div>
+  <div class="tile" style="background-image:url('../assets/frustration-tape.png')" data-label="Frustration"></div>
+  <div class="tile" style="background-image:url('../assets/caregiving-track.jpg')" data-label="Caregiving"></div>
+  <div class="tile" style="background-image:url('../assets/reflection-mix.png')" data-label="Reflection"></div>
+  <div class="tile" style="background-image:url('../assets/next-bar-filings.png')" data-label="Next Bar"></div>
+  <div class="tile" style="background-image:url('../assets/presenting-mic.png')" data-label="Presenting"></div>
+  <div class="tile" style="background-image:url('../assets/freestyle-field-guide.png')" data-label="Freestyle"></div>
+</body>
+</html>

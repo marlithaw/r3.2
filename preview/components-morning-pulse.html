@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="../colors_and_type.css">
+<style>
+  html, body { margin: 0; padding: 0; background: var(--app-canvas); }
+  body { padding: 24px; display: flex; gap: 12px; }
+  .state { flex: 1; padding: 20px; border-radius: 12px; display: flex; flex-direction: column; gap: 6px; cursor: pointer; transition: transform 0.18s; }
+  .state:hover { transform: translateY(-2px); }
+  .state .mono { font-family: var(--font-mono); font-weight: 700; font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; opacity: 0.85; }
+  .state .name { font-family: var(--font-display); font-weight: 800; font-size: 26px; letter-spacing: -0.02em; }
+  .state .desc { font-family: var(--font-body); font-size: 12px; opacity: 0.8; margin-top: 4px; }
+  .calm { background: var(--teal-mid); color: #fff; }
+  .tight { background: var(--amber); color: #1A1A1A; }
+  .over { background: var(--orange-pop); color: #fff; }
+</style>
+</head>
+<body>
+  <div class="state calm"><div class="mono">Morning Pulse · 01</div><div class="name">CALM</div><div class="desc">Grounded · ready to lead</div></div>
+  <div class="state tight"><div class="mono">Morning Pulse · 02</div><div class="name">TIGHT</div><div class="desc">Activated · prep before entry</div></div>
+  <div class="state over"><div class="mono">Morning Pulse · 03</div><div class="name">OVERWHELMED</div><div class="desc">Coaching card triggers first</div></div>
+</body>
+</html>

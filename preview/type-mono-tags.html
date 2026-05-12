@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="../colors_and_type.css">
+<style>
+  html, body { margin: 0; padding: 0; background: var(--app-canvas); }
+  body { padding: 24px; }
+  .row { display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 14px; align-items: center; }
+  .mono-label { font-family: var(--font-mono); font-weight: 700; font-size: 14px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--orange-pop); }
+  .mono-small { font-family: var(--font-mono); font-weight: 700; font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--orange-pop); }
+  .pill { font-family: var(--font-mono); font-weight: 700; font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; padding: 4px 8px; border-radius: 4px; }
+  .pill-teal { background: var(--teal-surface); color: var(--teal-mid); }
+  .pill-orange { background: rgba(255,107,0,0.10); color: var(--orange-pop); border: 1px solid var(--orange-pop); }
+  .pill-amber { background: rgba(255,152,0,0.12); color: #8a4a00; }
+  .delta { font-family: var(--font-mono); font-weight: 700; font-size: 11px; letter-spacing: 0.08em; padding: 3px 6px; background: var(--teal-surface); color: var(--teal-dark); border-radius: 4px; }
+  .legend { font-family: var(--font-body); font-size: 11px; color: var(--cool-muted); margin-left: 12px; }
+</style>
+</head>
+<body>
+  <div class="row"><div class="mono-label">TRACK 03 · LOAD THE TRACK</div><div class="legend">14px · UPPERCASE · 0.1em · Orange Pop</div></div>
+  <div class="row"><div class="mono-small">SCREEN 01 · ORIENTATION</div><div class="legend">12px subtitle</div></div>
+  <div class="row">
+    <div class="pill pill-teal">GRADE 7</div>
+    <div class="pill pill-orange">REFUSING ROUTINE</div>
+    <div class="pill pill-amber">FLAT · CALM · FIRM · WARM</div>
+    <div class="delta">▲ +18%</div>
+    <div class="legend">Tag · selected · tone chip · delta</div>
+  </div>
+</body>
+</html>

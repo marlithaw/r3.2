@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="../colors_and_type.css">
+<style>
+  html, body { margin: 0; padding: 0; background: #0C3645; }
+  body { padding: 24px; display: flex; gap: 24px; align-items: center; justify-content: center; min-height: 220px; }
+  .vinyl-wrap { position: relative; width: 160px; height: 160px; }
+  .vinyl {
+    width: 160px; height: 160px; border-radius: 50%;
+    background:
+      radial-gradient(circle, #0C3645 0%, #0C3645 22%, transparent 22.5%, transparent 24%, #1A5F7A 24%, #1A5F7A 24.6%, #0C3645 24.6%),
+      repeating-radial-gradient(circle at center, #1A1A1A 0 1px, #2a2a2a 1px 3px),
+      #1A1A1A;
+    box-shadow: 0 4px 24px rgba(9,45,58,0.5);
+    animation: spin 30s linear infinite;
+  }
+  .label-dot { position: absolute; top: 50%; left: 50%; width: 12px; height: 12px; margin: -6px 0 0 -6px; background: var(--orange-pop); border-radius: 50%; box-shadow: 0 0 12px rgba(255,107,0,0.7); }
+  .ring { position: absolute; inset: -10px; border-radius: 50%; border: 2px solid var(--orange-pop); border-right-color: transparent; border-bottom-color: transparent; transform: rotate(-30deg); }
+  @keyframes spin { to { transform: rotate(360deg); } }
+  .meta { color: #fff; font-family: var(--font-body); }
+  .meta .mono { font-family: var(--font-mono); font-weight: 700; font-size: 10px; letter-spacing: 0.14em; color: var(--orange-pop); text-transform: uppercase; }
+  .meta .h { font-family: var(--font-display); font-weight: 800; font-size: 24px; letter-spacing: -0.02em; margin: 6px 0; }
+  .meta .s { font-family: var(--font-body); font-size: 13px; color: rgba(255,255,255,0.7); }
+  .badge { display: inline-block; margin-top: 8px; padding: 4px 8px; background: rgba(255,107,0,0.15); color: var(--orange-pop); border-radius: 4px; font-family: var(--font-mono); font-size: 10px; font-weight: 700; letter-spacing: 0.1em; }
+</style>
+</head>
+<body>
+  <div class="vinyl-wrap">
+    <div class="vinyl"></div>
+    <div class="ring"></div>
+    <div class="label-dot"></div>
+  </div>
+  <div class="meta">
+    <div class="mono">● NOW PLAYING · TRACK 03</div>
+    <div class="h">Entry Routine</div>
+    <div class="s">Grade 7 · 12 days in practice</div>
+    <div class="badge">● ACTIVE</div>
+  </div>
+</body>
+</html>

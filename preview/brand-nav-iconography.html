@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="../colors_and_type.css">
+<style>
+  html, body { margin: 0; padding: 0; background: var(--app-canvas); }
+  body { padding: 24px; display: grid; grid-template-columns: repeat(5, 1fr); gap: 12px; }
+  .ic { aspect-ratio: 1/1; background: #fff; border: 1px solid rgba(0,0,0,0.06); border-radius: 10px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 6px; position: relative; }
+  .ic .g { font-size: 28px; color: var(--teal-bright); line-height: 1; }
+  .ic.active .g { color: var(--orange-pop); }
+  .ic .l { font-family: var(--font-mono); font-weight: 700; font-size: 8px; letter-spacing: 0.1em; color: var(--cool-muted); text-transform: uppercase; }
+  .ic.active .l { color: var(--orange-pop); }
+  .num { position: absolute; top: 4px; left: 6px; font-family: var(--font-mono); font-weight: 700; font-size: 8px; color: var(--cool-muted); opacity: 0.6; }
+</style>
+</head>
+<body>
+  <div class="ic"><span class="num">01</span><div class="g">◌</div><div class="l">Fog</div></div>
+  <div class="ic"><span class="num">02</span><div class="g">▌▐</div><div class="l">Levels</div></div>
+  <div class="ic active"><span class="num">03</span><div class="g">●</div><div class="l">Track</div></div>
+  <div class="ic"><span class="num">04</span><div class="g">📖</div><div class="l">Playbook</div></div>
+  <div class="ic"><span class="num">05</span><div class="g">🎧</div><div class="l">Practice</div></div>
+  <div class="ic"><span class="num">06</span><div class="g">🎙</div><div class="l">Live</div></div>
+  <div class="ic"><span class="num">07</span><div class="g">✎</div><div class="l">Liner</div></div>
+  <div class="ic"><span class="num">08</span><div class="g">↺</div><div class="l">Remix</div></div>
+  <div class="ic"><span class="num">09</span><div class="g">◯</div><div class="l">Cypher</div></div>
+  <div class="ic"><span class="num">10</span><div class="g">⌇</div><div class="l">Flow</div></div>
+</body>
+</html>

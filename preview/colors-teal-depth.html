@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Card</title>
+<link rel="stylesheet" href="../colors_and_type.css">
+<style>
+  html, body { margin: 0; padding: 0; background: var(--app-canvas); }
+  body { padding: 24px; }
+  .row { display: flex; gap: 12px; flex-wrap: wrap; align-items: stretch; }
+  .col { display: flex; flex-direction: column; gap: 12px; }
+  .swatch {
+    flex: 1 1 0;
+    min-height: 96px;
+    border-radius: 8px;
+    padding: 12px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    font-family: var(--font-mono);
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    position: relative;
+    overflow: hidden;
+  }
+  .swatch .name { font-size: 11px; }
+  .swatch .hex { opacity: 0.85; font-size: 10px; }
+  .swatch .role { font-size: 9px; opacity: 0.7; margin-top: 4px; font-family: var(--font-body); text-transform: none; letter-spacing: 0; font-weight: 500; }
+</style>
+</head>
+<body>
+<div class="row">
+  <div class="swatch" style="background:#092D3A;color:#fff">
+    <div><div class="name">Teal Deepest</div><div class="role" style="text-transform:none;font-weight:400;font-family:var(--font-body)">Cover · hero · modal overlay</div></div>
+    <div class="hex">#092D3A · 01</div>
+  </div>
+  <div class="swatch" style="background:#0C3645;color:#fff">
+    <div><div class="name">Teal Dark</div><div class="role" style="text-transform:none;font-weight:400;font-family:var(--font-body)">Primary bg · nav · headers</div></div>
+    <div class="hex">#0C3645 · 02</div>
+  </div>
+  <div class="swatch" style="background:#1A5F7A;color:#fff">
+    <div><div class="name">Teal Mid</div><div class="role" style="text-transform:none;font-weight:400;font-family:var(--font-body)">Secondary · hover · borders</div></div>
+    <div class="hex">#1A5F7A · 03</div>
+  </div>
+  <div class="swatch" style="background:#32758C;color:#fff">
+    <div><div class="name">Teal Bright</div><div class="role" style="text-transform:none;font-weight:400;font-family:var(--font-body)">Tertiary · glass edge</div></div>
+    <div class="hex">#32758C · 04</div>
+  </div>
+  <div class="swatch" style="background:#D6E9EF;color:#0C3645">
+    <div><div class="name">Teal Surface</div><div class="role" style="text-transform:none;font-weight:400;font-family:var(--font-body)">Tag bg · tint · row alt</div></div>
+    <div class="hex">#D6E9EF · 05</div>
+  </div>
+  <div class="swatch" style="background:#EBF4F7;color:#0C3645">
+    <div><div class="name">Teal Mist</div><div class="role" style="text-transform:none;font-weight:400;font-family:var(--font-body)">Lightest wash · divider</div></div>
+    <div class="hex">#EBF4F7 · 06</div>
+  </div>
+</div>
+</body>
+</html>

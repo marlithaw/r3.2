@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="../colors_and_type.css">
+<style>
+  html, body { margin: 0; padding: 0; background: var(--app-canvas); }
+  body { padding: 16px; display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; }
+  .tile { aspect-ratio: 1 / 1; border-radius: 10px; background-size: cover; background-position: center; position: relative; overflow: hidden; box-shadow: var(--elev-1); }
+  .tile::after { content: attr(data-label); position: absolute; left: 8px; bottom: 8px; background: rgba(9,45,58,0.78); color: #fff; font-family: var(--font-mono); font-weight: 700; font-size: 9px; letter-spacing: 0.1em; text-transform: uppercase; padding: 3px 7px; border-radius: 3px; }
+</style>
+</head>
+<body>
+  <div class="tile" style="background-image:url('../assets/studio-vinyl.png')" data-label="Vinyl"></div>
+  <div class="tile" style="background-image:url('../assets/studio-boombox.png')" data-label="Boombox"></div>
+  <div class="tile" style="background-image:url('../assets/studio-headphones.png')" data-label="Headphones"></div>
+  <div class="tile" style="background-image:url('../assets/studio-mixingboard.png')" data-label="Mixing board"></div>
+  <div class="tile" style="background-image:url('../assets/studio-wide-shot.png')" data-label="Studio"></div>
+  <div class="tile" style="background-image:url('../assets/educator-hallway.png')" data-label="Classroom"></div>
+  <div class="tile" style="background-image:url('../assets/teacher-meditate.png')" data-label="Grounding"></div>
+  <div class="tile" style="background-image:url('../assets/r3-cutout.png');background-position:center top;background-color:#f6f1e7" data-label="R³ Mark"></div>
+</body>
+</html>

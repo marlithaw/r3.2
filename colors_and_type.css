@@ -1,0 +1,261 @@
+/* ============================================================
+   R³AP — Modern Studio Design Tokens
+   Teal Depth System · Orange Signal · Studio Cypher Aesthetic
+   ============================================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&family=Permanent+Marker&display=swap');
+
+:root {
+  /* ---- Teal Depth System (architectural color) ---- */
+  --teal-deepest:  #092D3A;  /* Cover, hero, modal overlay, night base */
+  --teal-dark:     #0C3645;  /* Primary bg, H1 panels, nav, section headers */
+  --teal-mid:      #1A5F7A;  /* Secondary bg, hover, card borders, screen headers */
+  --teal-bright:   #32758C;  /* Tertiary accents, interactive highlight, glass edge */
+  --teal-surface:  #D6E9EF;  /* Tag bg, tint fill, row alternate */
+  --teal-mist:     #EBF4F7;  /* Lightest wash, callout bg, divider */
+
+  /* ---- Signal Color System ---- */
+  --orange-pop:    #FF6B00;  /* Primary action — CTA, active EQ, Live pulse */
+  --amber:         #FF9800;  /* Secondary — hover, gradient end, warm accent */
+  --red-warn:      #B8423D;  /* Warning only — DO NOT SAY, errors */
+  --green-check:   #2D7A4F;  /* Success — confirmed, protected, milestone */
+  --orange-tint:   rgba(255,107,0,0.10);
+  --teal-tint:     rgba(26,95,122,0.10);
+  --red-tint:      rgba(184,66,61,0.08);
+  --green-tint:    rgba(45,122,79,0.10);
+
+  /* ---- Neutral + Surface ---- */
+  --deep-ink:      #1A1A1A;  /* Body text, icons */
+  --cool-muted:    #64748B;  /* Secondary text, captions, metadata */
+  --pure-white:    #FFFFFF;  /* Cards, modals, inputs */
+  --app-canvas:    #F8FAFC;  /* Primary app bg — cool-slate, NEVER cream */
+
+  /* ---- Semantic ---- */
+  --fg1:           var(--deep-ink);
+  --fg2:           var(--cool-muted);
+  --fg-on-dark:    #FFFFFF;
+  --fg-on-dark-2:  rgba(255,255,255,0.72);
+  --bg-canvas:     var(--app-canvas);
+  --bg-card:       var(--pure-white);
+  --bg-hero:       var(--teal-dark);
+  --bg-hero-deep:  var(--teal-deepest);
+  --action:        var(--orange-pop);
+  --action-warm:   var(--amber);
+  --action-grad:   linear-gradient(90deg, #FF6B00 0%, #FF9800 100%);
+
+  /* ---- Type ---- */
+  --font-display:  'Inter Tight', system-ui, -apple-system, sans-serif;
+  --font-body:     'Inter Tight', system-ui, -apple-system, sans-serif;
+  --font-mono:     'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, monospace;
+  --font-marker:   'Permanent Marker', 'Inter Tight', sans-serif; /* PLURAL state ONLY */
+
+  /* ---- Spacing ---- */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-6: 24px;
+  --space-8: 32px;
+  --space-12: 48px;
+  --space-16: 64px;
+
+  /* ---- Radii ---- */
+  --radius-tag: 4px;       /* Tags, inner elements */
+  --radius-input: 6px;     /* Inputs, buttons */
+  --radius-card: 12px;     /* Cards, modals */
+  --radius-sheet: 16px;    /* Bottom sheets — top corners */
+
+  /* ---- Elevation ---- */
+  --elev-0: 0 0 0 1px rgba(0,0,0,0.08);
+  --elev-1: 0 4px 12px rgba(0,0,0,0.05);
+  --elev-2: 0 20px 40px rgba(0,0,0,0.15);
+  --elev-cta: 0 8px 16px rgba(255,107,0,0.25);
+  --elev-glass: 0 4px 24px rgba(9,45,58,0.30);
+
+  /* ---- Glass surfaces ---- */
+  --glass-on-teal:    rgba(255,255,255,0.10);
+  --glass-on-teal-bd: rgba(255,255,255,0.20);
+  --glass-deep:       rgba(26,95,122,0.25);
+  --glass-deep-bd:    rgba(50,117,140,0.40);
+}
+
+/* ============================================================
+   Base type styles
+   ============================================================ */
+
+html, body {
+  font-family: var(--font-body);
+  color: var(--fg1);
+  background: var(--bg-canvas);
+  font-size: 16px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+.h1, h1 {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 44px;
+  line-height: 1.05;
+  letter-spacing: -0.04em;
+  color: var(--teal-dark);
+}
+
+.h2, h2 {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 28px;
+  line-height: 1.1;
+  letter-spacing: -0.03em;
+  color: var(--teal-dark);
+}
+
+.h3, h3 {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  color: var(--teal-mid);
+}
+
+.track-label, .h4 {
+  font-family: var(--font-mono);
+  font-weight: 700;
+  font-size: 12px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--orange-pop);
+}
+
+.body, p {
+  font-family: var(--font-body);
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.6;
+  color: var(--deep-ink);
+}
+
+.metric, .data {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 36px;
+  line-height: 1;
+  letter-spacing: -0.03em;
+  color: var(--teal-dark);
+  font-variant-numeric: tabular-nums;
+}
+
+.tag, .pill {
+  font-family: var(--font-mono);
+  font-weight: 700;
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 4px 8px;
+  border-radius: var(--radius-tag);
+}
+
+.numeral-watermark {
+  font-family: var(--font-mono);
+  font-weight: 700;
+  font-size: 120px;
+  color: var(--teal-mid);
+  opacity: 0.05;
+  pointer-events: none;
+  user-select: none;
+}
+
+.celebrate {
+  font-family: var(--font-marker);
+  font-weight: 400;
+  letter-spacing: 0.01em;
+  /* Use ONLY for PLURAL State unlock + milestone unlocks. */
+}
+
+/* ============================================================
+   Component primitives
+   ============================================================ */
+
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--action-grad);
+  color: #fff;
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 15px;
+  padding: 12px 24px;
+  border-radius: var(--radius-input);
+  border: 0;
+  cursor: pointer;
+  transition: transform 0.18s ease, box-shadow 0.18s ease;
+}
+.btn-primary:hover { transform: translateY(-2px); box-shadow: var(--elev-cta); }
+.btn-primary:active { transform: translateY(0); }
+
+.btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  color: var(--teal-mid);
+  border: 2px solid var(--teal-mid);
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 15px;
+  padding: 10px 22px;
+  border-radius: var(--radius-input);
+  cursor: pointer;
+  transition: background 0.18s ease, color 0.18s ease;
+}
+.btn-secondary:hover { background: var(--teal-mid); color: #fff; }
+
+.btn-ghost {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  color: #fff;
+  border: 1px solid rgba(255,255,255,0.3);
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 14px;
+  padding: 10px 22px;
+  border-radius: var(--radius-input);
+  cursor: pointer;
+}
+.btn-ghost:hover { background: rgba(255,255,255,0.08); }
+
+.card {
+  background: var(--bg-card);
+  border: 1px solid rgba(0,0,0,0.08);
+  border-top: 3px solid var(--teal-mid);
+  border-radius: var(--radius-card);
+  box-shadow: var(--elev-1);
+  padding: var(--space-6);
+}
+.card.card-action { border-top-color: var(--orange-pop); }
+.card.card-growth { border-top-color: var(--green-check); }
+.card.card-warn   { border-top-color: var(--red-warn); }
+
+.glass-panel {
+  background: var(--glass-on-teal);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid var(--glass-on-teal-bd);
+  border-radius: var(--radius-card);
+  box-shadow: var(--elev-glass);
+  color: #fff;
+}
+
+.glass-deep {
+  background: var(--glass-deep);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border: 1px solid var(--glass-deep-bd);
+  border-radius: var(--radius-card);
+  box-shadow: var(--elev-glass);
+  color: #fff;
+}

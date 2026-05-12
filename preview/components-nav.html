@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="../colors_and_type.css">
+<style>
+  html, body { margin: 0; padding: 0; background: #0C3645; }
+  body { padding: 0; display: flex; flex-direction: column; align-items: stretch; min-height: 320px; }
+  .screen-mock { flex: 1; display: flex; align-items: center; justify-content: center; color: rgba(255,255,255,0.4); font-family: var(--font-mono); font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase; }
+  .nav {
+    background: rgba(255,255,255,0.06);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-top: 1px solid rgba(255,255,255,0.10);
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    padding: 10px 12px;
+    gap: 4px;
+  }
+  .tab { display: flex; flex-direction: column; align-items: center; gap: 4px; padding: 4px; color: #32758C; font-family: var(--font-mono); font-weight: 700; font-size: 9px; letter-spacing: 0.1em; text-transform: uppercase; }
+  .tab .ic { font-size: 18px; line-height: 1; }
+  .tab.active { color: var(--orange-pop); }
+  .tab.active .ic { text-shadow: 0 0 8px rgba(255,107,0,0.6); }
+</style>
+</head>
+<body>
+  <div class="screen-mock">— screen content —</div>
+  <div class="nav">
+    <div class="tab"><div class="ic">◌</div><div>Fog</div></div>
+    <div class="tab"><div class="ic">▌▐</div><div>Levels</div></div>
+    <div class="tab active"><div class="ic">●</div><div>Track</div></div>
+    <div class="tab"><div class="ic">📖</div><div>Playbook</div></div>
+    <div class="tab"><div class="ic">↺</div><div>Practice</div></div>
+  </div>
+</body>
+</html>

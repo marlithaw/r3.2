@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="../colors_and_type.css">
+<style>
+  html, body { margin: 0; padding: 0; background: var(--app-canvas); }
+  body { padding: 24px; display: flex; gap: 24px; align-items: center; flex-wrap: wrap; }
+  .group { display: flex; flex-direction: column; gap: 8px; align-items: flex-start; }
+  .metric { font-family: var(--font-display); font-weight: 800; line-height: 1; letter-spacing: -0.03em; font-variant-numeric: tabular-nums; }
+  .mono-cap { font-family: var(--font-mono); font-weight: 700; font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--cool-muted); }
+  .marker { font-family: var(--font-marker); color: var(--amber); font-size: 36px; line-height: 1.05; }
+</style>
+</head>
+<body>
+  <div class="group">
+    <div class="mono-cap">Data · 48</div>
+    <div class="metric" style="font-size:48px;color:var(--teal-dark);">88<span style="color:var(--orange-pop)">%</span></div>
+  </div>
+  <div class="group">
+    <div class="mono-cap">Data · 36</div>
+    <div class="metric" style="font-size:36px;color:var(--orange-pop);">−4 min</div>
+  </div>
+  <div class="group">
+    <div class="mono-cap">Marker · PLURAL only</div>
+    <div class="marker">The new response is the new rhythm.</div>
+  </div>
+</body>
+</html>

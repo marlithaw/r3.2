@@ -1,0 +1,1218 @@
+
+
+R³
+
+AGENCY PRACTICE
+
+━━━━━━━━━━━━━━━━━━━━━━━━
+
+Master App UI/UX Specification
+
+Visual Design & Architecture Handoff — v2.0
+
+━━━━━━━━━━━━━━━━━━━━━━━━
+
+Coaches: Marlitha Williams  ·  Coach Ray
+
+Palette: Modern Studio  ·  Teal Family + Orange Signal System
+
+May 2026  ·  CONFIDENTIAL
+
+
+
+
+0 · DESIGN SYSTEM — MODERN STUDIO
+
+━━━━━━━━━━━━━━━━
+
+
+
+0.1 · Design Philosophy
+
+The R³AP app merges high-end coaching intelligence with the "Studio Cypher" aesthetic: music production metaphors (tracks, mixing, equalizers) executed through clean, utilitarian software design. High contrast, sharp edges, and clear state changes make the app feel like premium audio production software — not a generic wellness tool.
+
+
+AESTHETIC MANDATE:  Modern Studio. Teal depth system. Orange signal energy. Pure surfaces, sharp borders, stark typography. Every screen should feel like the control room of a world-class studio — the place where precision meets creativity.
+
+
+
+
+
+0.2 · Teal Depth System
+
+Teal operates as a five-level depth system, creating visual hierarchy from the deepest hero backgrounds to the lightest surface washes. This is the primary architectural color — not a single flat shade.
+LEVEL
+NAME + HEX
+USAGE
+01 — Deepest
+Teal Deep  #092D3A
+Cover, hero areas, modal overlays, night-mode base
+02 — Dark
+Teal Dark  #0C3645
+Primary backgrounds, H1 panels, nav bar, section headers
+03 — Mid
+Teal Mid  #1A5F7A
+Secondary backgrounds, hover states, card borders, screen headers
+04 — Bright
+Teal Bright  #32758C
+Tertiary accents, interactive highlights, glass panel edges
+05 — Surface
+Teal Surface  #D6E9EF
+Tag backgrounds, tint fills, table row alternates
+06 — Mist
+Teal Mist  #EBF4F7
+Lightest wash, callout backgrounds, subtle row dividers
+
+
+
+
+
+0.3 · Signal Color System
+SIGNAL
+SPEC + USE
+Orange Pop  #FF6B00
+Primary action. CTA buttons, active equalizer bars, Live mode mic pulse, progress fills, selected state borders.
+Amber  #FF9800
+Secondary action. Button hover state, gradient end on primary buttons, warm accent on track numerals.
+Red  #B8423D
+Warnings only. "Do Not Say" indicators, error states, critical alerts.
+Green Check  #2D7A4F
+Success states. Confirmed actions, "Instruction Protected: Yes" indicator, milestone completions.
+Orange Tint  rgba(255,107,0,0.10)
+Tag fills, active state backgrounds, callout fills for action items.
+Teal Tint  rgba(26,95,122,0.10)
+Informational tag fills, neutral highlights, secondary callout backgrounds.
+
+
+
+
+
+0.4 · Neutral + Surface System
+NAME
+HEX + USE
+Deep Ink  #1A1A1A
+Primary body text, icons, all text on white/canvas surfaces.
+Cool Muted  #64748B
+Secondary text, captions, muted labels, metadata.
+Pure White  #FFFFFF
+Card surfaces, modal backgrounds, input fields.
+App Canvas  #F8FAFC
+Primary app background — crisp cool-slate. NEVER cream or warm-tinted.
+
+
+OVERRIDE:  Zero bronze, tan, sepia, cream (#F4EDE3), or warm-tinted backgrounds in the app. The canvas is cool-slate (#F8FAFC). Cards are pure white. The warmth comes from Orange and Amber accents — not background color temperature.
+
+
+
+
+
+0.5 · Typography System
+ELEMENT
+FONT + SPEC
+Display / H1
+Inter Tight  ExtraBold 800 · 36–48px · tracking -0.04em · Teal Dark or White on dark bg
+H2 Heading
+Inter Tight  ExtraBold 800 · 28px · tracking -0.03em · Teal Dark
+H3 Heading
+Inter Tight  SemiBold 700 · 20px · tracking -0.02em · Teal Mid
+H4 / Track Label
+JetBrains Mono  Bold 700 · 12–14px · UPPERCASE · letter-spacing 0.1em · Orange Pop
+Body
+Inter Tight  Regular/Medium 400–500 · 16px · line-height 1.6 · Deep Ink
+Data / Metrics
+Inter Tight  ExtraBold 800 · 24–36px · Teal Dark or Orange Pop
+Tags / Phase Pills
+JetBrains Mono  Bold 700 · 11–12px · UPPERCASE · letter-spacing 0.1em · 4px 8px padding
+Track Numerals
+JetBrains Mono or Inter Tight 800 · Used as watermarks (opacity 0.05) or bold Teal Mid list markers
+Celebration / PLURAL State
+Permanent Marker · ONLY for milestone unlocks and PLURAL State screen · Amber or White
+
+
+
+
+
+0.6 · Component Specifications
+
+
+Buttons
+
+
+PRIMARY BUTTON:   background: linear-gradient(90deg, #FF6B00, #FF9800);  color: #FFFFFF;  font: Inter Tight SemiBold 15px;  border-radius: 6px;  padding: 12px 24px;  hover: translateY(-2px), box-shadow: 0 8px 16px rgba(255,107,0,0.25);
+
+
+SECONDARY BUTTON:   background: transparent;  border: 2px solid #1A5F7A;  color: #1A5F7A;  border-radius: 6px;  hover: bg #1A5F7A, color white;
+
+
+GHOST BUTTON:   background: transparent;  border: 1px solid rgba(255,255,255,0.3);  color: white;  border-radius: 6px;  Used on dark teal backgrounds only.
+
+
+
+
+Cards & Glass Panels
+
+
+STANDARD CARD:   background: #FFFFFF;  border: 1px solid rgba(0,0,0,0.08);  border-top: 3px solid #1A5F7A (or #FF6B00 for action cards);  border-radius: 12px;  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+
+
+GLASS PANEL (on teal bg):   background: rgba(255,255,255,0.10);  backdrop-filter: blur(20px);  border: 1px solid rgba(255,255,255,0.20);  border-radius: 12px;  box-shadow: 0 4px 24px rgba(9,45,58,0.30);
+
+
+DEEP GLASS (on Teal Deep):   background: rgba(26,95,122,0.25);  backdrop-filter: blur(24px);  border: 1px solid rgba(50,117,140,0.40);  border-radius: 12px;
+
+
+
+
+Spacing & Radii
+SCALE
+VALUES
+Micro spacing
+4px, 8px — between icon and text, tag internal padding
+Component spacing
+12px, 16px, 24px — padding inside cards, buttons, inputs
+Layout spacing
+32px, 48px, 64px — spacing between sections
+Radii system
+4px (tags/inner elements) · 6px (inputs/buttons) · 12px (cards/modals)
+Elevation 0
+Flat — 1px border only
+Elevation 1 (Cards)
+0 4px 12px rgba(0,0,0,0.05)
+Elevation 2 (Modals)
+0 20px 40px rgba(0,0,0,0.15)
+
+
+
+
+1 · GOVERNING PRODUCT RULES
+
+━━━━━━━━━━━━━━━━
+
+Use the language already built. Do not add new terms unless a true gap exists. The app should feel like R³AP — not like a generic SEL, wellness, coaching, or classroom management platform.
+
+
+CORE PRODUCT STATEMENT:  R³AP is a guided classroom-culture operating system that helps educators clear the fog, respond with precision under pressure, and build learning environments where regulation, belonging, and academic growth can be sustained.
+
+
+SHORT POSITIONING:  R³AP helps educators clear the fog in the moment, choose the next grounded move, and build classroom cultures where students can regulate, belong, and grow.
+
+
+
+
+
+1.1 · Cultural Operating System Pillars
+PILLAR
+DEFINITION & EVIDENCE TARGETS
+Regulation
+Adults stabilize themselves and the environment so students can enter a learning-ready state. Evidence: reduced time to readiness, fewer repeated redirects, increased use of precise teacher language.
+Belonging
+Students experience clear expectations, fair systems, dignity, structured participation, and repair. Evidence: increased participation, more dignity-preserving corrections, more repair conversations.
+Growth
+Students move from readiness and participation into stronger academic behavior and measurable learning progress. Growth must include student academic outcomes — not just engagement. Evidence: increased work completion, improved exit ticket performance, more instructional time protected.
+
+
+
+
+
+1.2 · R³ Internal Change Process
+STAGE
+DEFINITION
+Reflection
+See the moment clearly enough to understand what it is showing.
+Resistance
+Interrupt the automatic pattern before it takes over.
+Revelation
+Integrate the new understanding and practice the new response until it becomes part of the adult&apos;s operating system.
+
+
+
+
+2 · NAVIGATION ARCHITECTURE — 10 CORE SCREENS
+
+━━━━━━━━━━━━━━━━
+
+Persistent bottom navigation bar (iOS HIG / Material 3 hybrid). Glass panel on Teal Dark background. Active tab: Orange Pop icon + label. Inactive: Teal Bright icon only.
+
+
+TRACK #
+SCREEN NAME
+TAB ICON CONCEPT
+01
+Clear the Fog
+Fog cloud dissolving — animated on active state
+02
+Check Your Levels
+Equalizer bars — pulsing on active
+03
+Load the Track
+Vinyl record with Orange Play indicator
+04
+Read the Playbook
+Open book with spark / signal light
+05
+Practice Station
+Headphones with mic stand
+06
+Live
+Microphone with Orange pulse ring — animates when active
+07
+Liner Notes
+Pen on lined page with waveform
+08
+Remix
+DJ fader / turntable with rotation arrows
+09
+The Cypher
+Circle of microphone silhouettes
+10
+Master the Flow
+Rising waveform with star burst (Amber)
+
+
+
+
+
+2.1 · Navigation Rules
+
+
+"Run That Back" — NOT a main tab. Recurring return-arrow action button throughout Remix and Practice Station.
+
+
+"Let&apos;s R.A.P. About It" — NOT a main tab. Contextual coaching card that surfaces based on data patterns.
+
+
+ONE active Current Track per teacher at all times. No multi-track parallel loading.
+
+
+Balance Period integration enters at three points ONLY: Clear the Fog, The Cypher, Master the Flow.
+
+
+
+
+3 · TEACHER ACTION CYCLE INTEGRATION
+
+━━━━━━━━━━━━━━━━
+
+
+THE CYCLE:  Observe → Diagnose → Regulate → Respond → Document → Reflect → Practice → Share → Sustain
+
+
+CYCLE STAGE
+APP SCREEN / FEATURE
+Observe
+Clear the Fog — orientation scan, fog-source identification
+Diagnose
+Check Your Levels — Equalizer diagnostic; Scenario Engine student pattern filter
+Regulate
+Clear the Fog (adult grounding prompt), Morning Pulse, teacher state logging (TRS)
+Respond
+Live — exact in-moment script, Do Not Say warning, Next Move, Return to Instruction
+Document
+Liner Notes — voice capture, structured prompts, academic quick-indicators
+Reflect
+"Let&apos;s R.A.P. About It" coaching card; Liner Notes R.A.P. prompts
+Practice
+Practice Station — scenario rehearsal, Run That Back, voice response recording
+Share
+The Cypher — cohort feed, Wellness Wednesdays, track sharing, coach broadcast
+Sustain
+Master the Flow — long-term dashboard, PLURAL State, maintenance planning
+
+
+
+
+4 · CORE SYSTEM LOOP — DAILY READINESS ENGINE
+
+━━━━━━━━━━━━━━━━
+
+Every morning: a maximum 5-minute loop producing three measurable system outputs.
+
+
+THREE OUTPUTS:  Teacher Regulation State (TRS)  ·  Student Readiness State (SRS)  ·  Instructional Readiness Time (IRT)
+
+
+
+
+
+4.1 · Morning Pulse
+
+  FEATURE · MORNING PULSE  
+
+
+
+3-tap teacher + class check-in generating an instant readiness score. Target: 30–60 seconds.
+COMPONENT
+DESIGN SPEC
+Teacher State Selector
+Three full-width tap cards on Teal Dark background: CALM (Teal Mid fill) · TIGHT (Amber fill) · OVERWHELMED (Orange fill). JetBrains Mono labels. No icons needed — state is visually self-evident through color.
+Readiness Score Dial
+Circular gauge. Orange Pop fill arc on Teal Deep track. Score number in Inter Tight ExtraBold 48px, white. Percentage delta badge in Teal Surface chip.
+Auto-Routing
+If OVERWHELMED: coaching card triggers before routing. If TIGHT/CALM: routes to recommended next screen.
+Output
+TRS logged. Balance Period fog check prompted if OVERWHELMED state occurs 3+ consecutive days.
+
+
+
+
+
+4.2 · Time to Learn Tracker
+
+  FEATURE · TIME TO LEARN TRACKER  
+
+
+
+Teacher taps START when instruction actually begins. App auto-calculates delay from class start time and trends it in Master the Flow.
+COMPONENT
+DESIGN SPEC
+Timer FAB
+Floating action button. Orange Pop fill. Label: "Instruction Started." Placed bottom-right on Live and Clear the Fog screens. Pressing it logs IRT timestamp.
+Fast Start Score
+Green badge: < 3 min to readiness · Yellow badge: 3–6 min · Orange badge: 6+ min. Displayed in Liner Notes summary and Master the Flow.
+Pattern Statement
+Auto-generated in "Let&apos;s R.A.P. About It" after 5+ data points: "On days you grounded first, your class reached readiness 3 minutes faster."
+
+
+
+
+
+4.3 · Pattern Finder
+
+  FEATURE · PATTERN FINDER  
+
+
+
+Weekly summary auto-surfaces in Master the Flow and coaching cards. Analyzes Liner Notes to surface behavioral and classroom readiness trends.
+PATTERN TYPE
+EXAMPLE OUTPUT
+Day-of-week patterns
+"Mondays = highest dysregulation. Fridays = strongest participation."
+Teacher state correlation
+"After teacher grounding logged as CALM: classes reached readiness 38% faster."
+Student pattern frequency
+"Refusing routine appeared 7 times this week across 3 class periods."
+Track effectiveness
+"Entry Routine track: time-to-readiness dropped from 9 min → 5 min in 2 weeks."
+
+
+
+
+
+4.4 · Script Engine
+
+  FEATURE · SCRIPT ENGINE  
+
+
+
+Powers "Say This / Do Not Say This" logic across Live, Practice Station, and Playbook. Exact language + tone guidance + follow-through.
+COMPONENT
+SPEC
+SAY THIS
+Orange Pop left border card on white. Inter Tight SemiBold 18px. ONE line maximum. Example: "Your seat is posted. Find it."
+DO NOT SAY
+Red left border card. JetBrains Mono strikethrough text. Example: "Why do you always do this?"
+Tone Guidance
+JetBrains Mono pill tag: FLAT · CALM · FIRM · WARM. Teal Surface fill, Teal Mid text.
+Follow-Through
+One clear action. Teal Bright italic text. Arrow icon. Example: "Return attention to the class. Follow up privately."
+
+
+
+
+5 · SCREEN-BY-SCREEN SPECIFICATIONS
+
+━━━━━━━━━━━━━━━━
+
+01 Clear the Fog
+
+─────────────────────────────
+
+  TEACHER QUESTION: "WHAT IS ACTUALLY HAPPENING RIGHT NOW, AND WHAT NEEDS MY FOCUS?"  
+
+
+
+
+Purpose
+
+Orient the teacher to what is actually happening before reacting from assumption, stress, exhaustion, or automatic survival response.
+
+
+Layout Zones
+ZONE
+CONTENT & UI SPEC
+Hero (top 28%)
+Teal Dark (#0C3645) background. Inter Tight 800 title: "CLEAR THE FOG" in white. JetBrains Mono subtitle tag: "SCREEN 01 · ORIENTATION" in Amber. Coach avatar (Marlitha) upper-right corner — expression: grounded, steady coaching stance. Subtle fog-dissolving animation: white particle wisps fade left-to-right on entry.
+Orientation Scan — Glass Panel
+Glass panel on Teal Mid background (rgba white 0.10, blur 20px, radius 12px). Five tap-to-answer prompts rendered as pill buttons (Teal Surface bg, Teal Dark text): Where are you? / What is happening? / Who is involved? / What is the immediate demand? / What needs focus right now?
+Fog Source Selector
+Multi-select tag grid (JetBrains Mono, 12px, uppercase). Tags: EXHAUSTION · OVERSTIMULATION · OUTSIDE STRESS · EMOTIONAL RESIDUE · BURNOUT · POOR RECOVERY · UNCLEAR BOUNDARIES · DIGITAL DISTRACTION. Selected state: Orange Tint bg, Orange Pop border + text.
+Morning Pulse Widget
+Embedded 3-tap card (see Section 4.1). Floating below Fog Source section. Teal Dark card with glass overlay.
+CTA
+Primary Orange button full-width: "I&apos;m Oriented. Check My Levels." Routes to Screen 02.
+
+
+Data Captured
+
+
+Current setting and issue · Perceived fog source · Urgency level (1–3)
+
+
+Teacher starting state (TRS) · Balance-related pattern flag (optional)
+
+
+
+02 Check Your Levels
+
+─────────────────────────────
+
+  TEACHER LANGUAGE: "CHECK YOUR LEVELS. NAME THE TRACK BEFORE YOU TRY TO REMIX IT."  
+
+
+
+
+Purpose
+
+Turn the Equalizer concept into a quick diagnostic that prevents the teacher from guessing at what kind of support they need.
+
+
+Layout Zones
+ZONE
+CONTENT & UI SPEC
+Header — Equalizer Hero
+Teal Dark background. Five animated equalizer bars (Orange Pop, varying heights, slow 0.8s CSS pulse animation). Title: "CHECK YOUR LEVELS" Inter Tight 800 white. Subtitle: "What does your classroom need right now?" Cool Muted.
+Equalizer Diagnostic
+Five vertical slider controls (custom component). Track: Teal Surface. Fill: Orange Pop → Amber gradient as level increases. Labels: Grade Band / Current Routine / Student Pattern / Teacher Need / Urgency. Values rendered in JetBrains Mono Amber.
+Academic Input Row
+Single text/voice input: "What academic task or standard is involved?" Teal Mist background input. Optional flag.
+Recommendation Card
+White card, Teal Mid top border (3px). Auto-populated: "Based on your levels, your next move is [SCREEN NAME]" with directional arrow. Track numeral watermark (01–10) at 0.05 opacity behind card content.
+CTA Pair
+"Go There Now" — primary orange button · "Override" — ghost button, Teal Mid border.
+
+
+
+03 Load the Track
+
+─────────────────────────────
+
+  PRODUCT RULE: ONLY ONE PRIMARY TRACK ACTIVE AT A TIME.  
+
+
+
+
+Purpose
+
+Keep the teacher focused on one active improvement area. "Current Track" is the app&apos;s primary organizing principle.
+
+
+Layout Zones
+ZONE
+CONTENT & UI SPEC
+Now Playing Card
+Top of screen. Circular vinyl disc graphic (Teal Dark label, Teal Mid groove rings). Slow rotation animation (2rpm). Track name: Inter Tight 800 white. Orange "● ACTIVE" badge in JetBrains Mono. Circular progress ring (Orange Pop fill on Teal Surface track) shows coaching cycle %.
+Track Library
+Scrollable card grid. Each track card: white bg, 3px Teal Mid top border, large JetBrains Mono numeral watermark (02–14 at 0.05 opacity). Track name Inter Tight 700. Grade-band tag (JetBrains Mono, Teal Tint bg). Difficulty: 1–3 Orange bar indicators.
+Track Examples
+Entry Routine · Assigned Seat Follow-Through · Remaining Seated · IXL Movement System · Profanity Response · Task Avoidance · Student Dysregulation · Repair Conversation · Participation Reset · Work Completion Push · Exit Ticket Routine · Productive Struggle Reset
+Load CTA
+"Load This Track" — primary orange full-width button. Track switch: confirmation modal (Teal Dark overlay, white card, Teal Mid border): "Switching tracks. Previous Liner Notes stay saved."
+
+
+
+04 Read the Playbook
+
+─────────────────────────────
+
+  TEACHER LANGUAGE: "READ THE PLAYBOOK. LEARN THE MOVE BEFORE THE MOMENT TESTS IT."  
+
+
+
+
+Layout Zones
+ZONE
+CONTENT & UI SPEC
+Playbook Index
+Card grid. Each Playbook card: white bg, 3px top border (Teal Mid for Regulation, Orange for Belonging, Amber for Growth). Tag: pillar type in JetBrains Mono pill. Completion ring: Orange Pop arc on Teal Surface.
+Entry Structure (10 zones)
+1. What this solves  2. Why it matters  3. Teacher setup  4. Student steps  5. SAY THIS [Orange left border callout]  6. DO NOT SAY [Red left border callout]  7. Common failure points  8. Grade-Band Response Guidance [Tab strip]  9. Academic growth connection  10. Liner Notes reflection prompt
+Grade-Band Tab Strip
+Horizontal tabs: GR. 5 · GR. 6 · GR. 7 · GR. 8 in JetBrains Mono. Active tab: Orange Pop underline + text. Each tab reveals coaching stance card (Teal Mist bg, Teal Mid border) + research anchor + app implication.
+Phrase Bookmarks
+Long-press any SAY THIS phrase → "Save to Live" — surfaces instantly on Screen 06. Orange bookmark indicator on saved phrases.
+
+
+Grade-Band Response Guidance
+GRADE
+COACHING STANCE + APP ROUTING
+Grade 5
+Maintain momentum. Follow up after the room is moving — not mid-disruption. App routes to: Entry Routine, Assigned Seat, IXL Movement System tracks.
+Grade 6
+Build trust through warmth and transparent expectations. App surfaces: fairness-visible scripts, objective system explanations, equal-accountability language.
+Grade 7
+High clarity, low emotional reactivity, strategic attention, precise follow-through. App prioritizes: private follow-up guidance, strategic ignore, what to document vs. address publicly.
+Grade 8
+Preserve dignity, provide structure, explicitly affirm intellectual capacity. App surfaces: dignity-preserving correction, repair conversation scripts, belief-in-capacity language.
+
+
+LABEL RULE:  Always "Grade-Band Response Guidance." NEVER "Grade-Band Developmental Truths."
+
+
+REQUIRED DISCLAIMER (on every grade-band card):  These patterns are coaching hypotheses based on observed classroom patterns and aligned with early adolescent development, belonging research, and trauma-informed practice. Use them to choose a starting stance, then adjust based on the student, context, and evidence.
+
+
+
+05 Practice Station
+
+─────────────────────────────
+
+  TEACHER LANGUAGE: "PRACTICE STATION. RUN THE MOMENT BEFORE IT RUNS YOU."  
+
+
+
+
+Layout Zones
+ZONE
+CONTENT & UI SPEC
+Scenario Selector
+Filtered list: by Student Pattern / Current Track / Grade Band. Each scenario: white card, 3px Orange top border, trigger description, difficulty tag (JetBrains Mono Orange), estimated practice time in Teal Mid.
+Scenario Player
+Full-screen card: Teal Dark bg with glass overlay. Six sequential zones: Trigger → Student Pattern → Conditioned Response → Why It Escalates → R³AP Response → Exact Words. Orange "SAY THIS" block. Red "DO NOT SAY" block.
+Practice Modes
+"Choose the next line" (multiple choice, 3 options) · "Identify the student pattern" · "Select what NOT to say" · "Practice aloud" · "Voice record + compare to model" · "Did this protect instruction?" (Yes / Partially / No — colored chips).
+Run That Back Button
+Persistent bottom bar. Teal Mid outlined pill: "↺  Run That Back". Re-runs scenario from any point.
+Score Card
+After each scenario: white card, metric row (accuracy / confidence / recommended Live support / academic flow protected). Teal Mid top border.
+
+
+
+06 Live
+
+─────────────────────────────
+
+  TEACHER LANGUAGE: "LIVE. USE THE NEXT LINE. DO NOT OVERTALK. RETURN TO THE TRACK."  
+
+
+
+
+Purpose — Ultra-Low-Friction Design
+
+Live is the highest-urgency screen. Design must be instantly readable with one glance. No scrolling. No searching. One screen. Six zones.
+
+
+Layout Zones
+ZONE
+CONTENT & UI SPEC
+Status Bar
+Teal Dark. JetBrains Mono: "● LIVE" in Orange Pop. Pulsing orange glow on the mic dot (1.2s ease-in-out). Time to Learn Tracker FAB (Orange, top-right).
+Situation Input
+Three large tap targets (most common situations from Current Track). Pre-populated, one tap. Or: mic icon for voice input. Teal Mid background, white text.
+Live Card — Full Screen
+Deep Glass panel (rgba 26,95,122,0.25, blur 24px). Card fills 85% of screen. Six stacked zones:
+Zone 1: What This Might Be
+Student pattern chip: JetBrains Mono, Orange Tint bg, Orange Pop text. Upper-left placement.
+Zone 2: SAY THIS
+Inter Tight SemiBold 20px. Orange Pop left border (4px). Teal Mist bg. ONE LINE. Maximum 12 words.
+Zone 3: DO NOT SAY
+Inter Tight 16px. Red left border (4px). rgba(184,66,61,0.08) bg. Strikethrough.
+Zone 4: NEXT MOVE
+Inter Tight 16px. Arrow → icon in Teal Bright. One sentence.
+Zone 5: RETURN TO INSTRUCTION
+Inter Tight 14px. Teal Mid italic. "Begin with the students who are ready."
+Zone 6: LINER NOTE LATER
+Ghost pill button: "Capture This ✎" — saves event to Liner Notes queue with one tap.
+
+
+NON-NEGOTIABLE — LIVE ALWAYS SHOWS EXACTLY:  One script line · One Do Not Say warning · One next move · One return-to-instruction cue · One documentation prompt. NOTHING MORE.
+
+
+
+07 Liner Notes
+
+─────────────────────────────
+
+  TEACHER LANGUAGE: "LINER NOTES. CAPTURE WHAT HAPPENED BEFORE THE MOMENT DISAPPEARS."  
+
+
+
+
+Layout Zones
+ZONE
+CONTENT & UI SPEC
+Voice Capture Button
+Large circular button (72px diameter). Orange Pop fill, white mic icon. Waveform visualization on recording: Orange Pop bars animating on Teal Dark strip. Auto-transcribes via on-device speech recognition. Cool Muted transcript text below.
+Structured Prompt Stack
+Eight stacked prompt cards (Teal Mist bg, Teal Mid left border 2px): What happened? · What did I say or do? · Did the room return to the track? · Did students complete the academic task? · What target skill was practiced? · What did student work show? · Did the response protect instructional time? · What needs to be run back?
+Academic Quick Capture (3 taps)
+Three questions, three pill-button sets. Teal Surface chip default, Orange Pop on selection. Q1: Task completion — Most / Some / Few. Q2: Target skill understanding — Strong / Partial / Limited. Q3: Academic time protected — Yes / Partially / No.
+Pattern Trigger
+If same event appears 3+ times in 5 days: "Let&apos;s R.A.P. About It" card auto-slides up from bottom.
+Entry History Timeline
+Reverse-chrono scroll. Each entry: date chip (JetBrains Mono), Current Track label, outcome tag (WIN in green tint · NEEDS WORK in orange tint · PATTERN ALERT in red tint).
+
+
+
+08 Remix
+
+─────────────────────────────
+
+  TEACHER LANGUAGE: "REMIX. REPLACE THE OLD PATTERN WITH A STRONGER TRACK."  
+
+
+
+
+Four Remix Modes
+MODE
+WHAT IT DOES + UI SPEC
+A · Rewrite the Move
+Turn a rough, reactive, or overexplained response into precise teacher language. Input form: 4 voice/text fields (white cards, Teal Mid top border). Output card: Stronger line (Orange left border), Shorter version, Do Not Say (Red border), Follow-up option.
+B · Build the Routine
+Turn a repeated classroom breakdown into a routine students can follow. Inputs: 6 prompts. Output: Student steps + Teacher script + Visual cue + Practice moment + Liner Note prompt. Displayed as a numbered steps card (JetBrains Mono numerals in Amber).
+C · Put It on a Track
+Convert a Current Track or reflection into a song, chant, hook, or call-and-response. Teacher selects: Track · Audience · Purpose · Tone · Key phrases. Output: Lyric draft + Hook + Chant + Suno-ready prompt. OPTIONAL — not required. Legal guardrail card displayed on entry.
+D · Run That Back
+Revisit any failed Live moment, scenario, Playbook routine, Liner Note reflection, or work-completion problem. Each revisit logged for Pattern Finder. Orange "↺" icon. Normalizes repetition as professional practice, not failure.
+
+
+LEGAL GUARDRAIL (displayed on Put It on a Track entry):  Before public or commercial use of AI-generated songs, verify current tool terms and licensing. This track is for personal and classroom use.
+
+
+
+09 The Cypher
+
+─────────────────────────────
+
+  TEACHER LANGUAGE: "THE CYPHER. BRING YOUR TRACK. SHARE THE PRACTICE. BUILD THE SYSTEM TOGETHER."  
+
+
+
+
+Social Connectivity Architecture
+
+The Cypher is R³AP&apos;s community hub — functioning like Spotify social + a coach broadcast system + an educator practice-sharing network. All content is cohort-scoped by default.
+SOCIAL FEATURE
+UI SPEC
+Teacher Feed
+Vertical scroll. Each post = a "win card" (white, 3px Teal Mid top border): Track name chip, win description, days-in-practice badge (JetBrains Mono, Amber). Reactions: ♡ This Helped · ↺ I&apos;m Trying This · 💬 Add to thread.
+Track Listening
+Teachers share Suno-generated tracks from "Put It on a Track." Waveform visualization: Orange Pop bars on Teal Dark background. Track card: vinyl thumbnail (spinning, 1rpm), track title Inter Tight 700, teacher tag (JetBrains Mono, Teal Tint), grade band, purpose tag, play count.
+Routine Sharing
+Built routines from Remix B. "Routine card" format: white card, Orange top border, step count badge, grade band. "Borrow This Routine" CTA — orange outlined button. "Borrowed by X teachers" counter in Teal Mid.
+Wellness Wednesdays
+Pinned Wednesday card: Teal Dark bg, Amber heading "WELLNESS WEDNESDAY," Balance Blueprint reflection prompt + classroom win share + weekly wellness action input. Auto-surfaces every Wednesday.
+Cohort Pods
+4–8 teachers per pod. Shared Current Track visible per member. Pod streak indicator (Orange flame icon, JetBrains Mono count). Pod-level commitment card at top of feed.
+Coach Broadcast — Weekly Drop
+Pinned top of feed every Monday. Coach avatar (Marlitha or Ray). Short coaching video OR text note in card. "This week we&apos;re working on..." framing. Teal Deep bg card with Orange accent bar.
+Video Integration
+Inline player. Orange Pop progress bar. Teal Dark scrubber bg. Coach avatar overlaid lower-left during playback. Captions always on. No autoplay with sound. 16:9, 1080p source minimum.
+
+
+
+10 Master the Flow / PLURAL State
+
+─────────────────────────────
+
+  TEACHER LANGUAGE: "MASTER THE FLOW. THE NEW RESPONSE BECOMES THE NEW RHYTHM."  
+
+
+
+
+Purpose
+
+The proof screen. The dashboard that makes the value of R³AP undeniable to the teacher, coach, and administrator. Long-term integration, sustained culture change, wellness consistency, and student growth evidence — all in one view.
+
+
+Layout Zones
+ZONE
+CONTENT & UI SPEC
+Hero Dashboard
+Teal Deep background. Floating metric cards (Deep Glass panels). 2×2 grid layout. Inter Tight 800 metric numbers in Orange Pop on card. Trend delta badge in JetBrains Mono (Teal Surface chip).
+Time to Readiness Chart
+Line chart. Orange Pop line, Teal Surface area fill below. X: weeks. Decreasing trend framed positively: "You&apos;ve reduced entry time by 4 minutes since Week 1."
+Redirect Reduction Counter
+Inter Tight 800, 48px, white. "Redirects This Week: 12 → Last Month: 31." Delta: Amber downward arrow + number.
+Participation Tracker
+Horizontal bar per class period. Orange fill left to right on Teal Dark track. Percentage overlay in JetBrains Mono white.
+Academic Evidence Panel
+Three mini sparkline cards (white, 3px top border — green for growth). Work Completion / Target Skill Accuracy / Exit Ticket Performance. Delta badge per metric.
+PLURAL State Indicator
+Unlocked when sustained response habits + academic evidence achieved. Visual shift: Permanent Marker font for the celebration text. Amber particles burst (800ms). Card reads "PLURAL STATE UNLOCKED — The new response is the new rhythm." Coach avatar: celebrating expression.
+Proof Builder
+Auto-generated shareable card: "My class reduced transition time from 8 min → 4 min in 2 weeks." One-tap share or copy. Orange Pop border on card.
+Balance Connection
+Sustainable Self-Care System streak: wellness action completion chip (green). Statement connecting teacher self-care consistency to readiness data.
+
+
+
+
+6 · SCENARIO ENGINE
+
+━━━━━━━━━━━━━━━━
+
+The Scenario Engine is the product core. It powers Live, Practice Station, and coaching recommendations by sorting every classroom situation through four filters simultaneously.
+
+
+FOUR FILTERS:  Student Pattern → Teacher Need → Grade-Band Response Guidance → Current Track
+
+
+
+
+
+6.1 · Student Pattern Library — 16 Core Patterns
+CATEGORY
+PATTERN
+PRIMARY RESPONSE PATH
+Academic
+Does not understand
+Reteach decision, skill check, academic re-entry
+Academic
+Not challenged enough
+Academic re-entry, meaningful feedback, productive struggle
+Academic
+Academically stuck
+Productive struggle reset, wait time, work completion push
+Academic
+Completing work with low accuracy
+Skill check, formative capture, reteach flag
+Academic
+Avoiding productive struggle
+Productive struggle reset, engagement script
+Academic
+Producing limited academic output
+Work completion push, task anchor phrase
+Regulation
+Dysregulated
+Adult regulate-first, exact words, tone reset
+Regulation
+Escalating through language
+Dignity-preserving correction, strategic attention
+Belonging
+Testing boundary
+Follow-through, consistency, private follow-up
+Belonging
+Seeking peer attention
+Strategic attention, ignore-or-acknowledge decision
+Belonging
+Avoiding task
+Participation reset, repair conversation
+Belonging
+Refusing routine
+Movement control, follow-through, Playbook re-read
+Belonging
+Reacting to perceived unfairness
+Dignity-preserving correction, wait time, fairness script
+Belonging
+Recovering from public correction
+Re-entry script, repair conversation, private follow-up
+Systems
+Off-task because routine is unclear
+Playbook re-read, routine rebuild in Remix B
+Systems
+Disconnected from the work
+Academic re-entry, participation reset, task anchor
+
+
+
+
+
+6.2 · Teacher Need Library — 16 Core Needs
+TEACHER NEED
+RESPONSE TOOLS SURFACED
+Exact words
+Script Engine → Live card (SAY THIS block)
+Reduced language
+Shortened Live card variant (one line, maximum 8 words)
+Tone reset
+Grounding prompt + JetBrains Mono tone guidance chip (FLAT / CALM / FIRM)
+Follow-through
+Three-step Next Move sequence in Live card
+Repair conversation
+Playbook: Repair Conversation Track + exact repair language
+Dignity-preserving correction
+Live card with "PRESERVE DIGNITY" tag, private-follow-up CTA
+Re-entry after disruption
+Return-to-instruction script + Liner Note capture prompt
+Academic re-entry
+Work completion push script + task anchor phrase
+Reteach decision
+Formative check prompt + reteach flag in Liner Notes
+Wait time
+Live card: "Pause. 5 seconds. Then respond." coaching overlay
+Strategic attention
+Live card: "What to address publicly vs. ignore now vs. document."
+Work completion push
+Script: "The expectation is still X. I&apos;ll check back in 3 minutes."
+
+
+
+
+7 · USER VIEWS — TEACHER · COACH · ADMIN
+
+━━━━━━━━━━━━━━━━
+
+
+
+7.1 · Teacher View
+
+  PURPOSE: HELP THE TEACHER USE THE NEXT GROUNDED MOVE.  
+
+
+
+Teacher view stays low-burden and action-oriented. Every tap leads to a grounded decision — never a data wall, a compliance form, or an overwhelming menu.
+ACCESS
+SPEC
+Full 10-screen navigation
+All screens accessible. Screen 10 shows personal data only.
+"Let&apos;s R.A.P. About It" cards
+Contextual surfacing only — not a tab. Based on Liner Notes patterns.
+Action tools
+Live, Practice Station, Run That Back, Morning Pulse
+Reflection tools
+Liner Notes (voice + structured), Remix (all 4 modes)
+Community tools
+The Cypher (feed, track listening, routine sharing, Wellness Wednesdays)
+Privacy rule
+Private Liner Note reflections are NOT visible to Coach or Admin by default. Sharing is opt-in.
+
+
+
+
+
+7.2 · Coach View
+
+  PURPOSE: IDENTIFY PATTERNS AND SUPPORT TEACHER GROWTH.  
+
+
+FEATURE
+SPEC
+Teacher Usage Dashboard
+Active tracks per teacher, screen engagement frequency, Live usage rate, Liner Notes completion rate. Teal Deep bg, glass metric cards.
+Pattern Intelligence
+Top repeated student patterns across caseload. Routine breakdown frequency. Grade-Band Response Guidance trends. Script use rate.
+Academic Evidence Review
+Work completion trends per teacher. Exit ticket / quick-check data linked to Current Track. Participation level shifts.
+Coaching Recommendations
+Auto-generated scenario recommendations from Liner Notes patterns. "This teacher has seen Refusing Routine 6 times — recommend Practice Station: Grade 7 Boundary Scenario."
+Cypher Participation
+Cohort engagement rate. Shared wins count. Wellness Wednesday participation. Pod-level streaks.
+
+
+
+
+
+7.3 · Admin View
+
+  PURPOSE: MONITOR IMPLEMENTATION, CULTURE TRENDS, AND PILOT EVIDENCE.  
+
+
+
+Admin view shows system-level outcomes. Individual teacher private reflections, personal Liner Notes, and wellness data are NEVER exposed to Admin unless the pilot agreement explicitly grants access.
+METRIC
+DISPLAY FORMAT
+Time to readiness trends
+Campus-wide average line chart. Orange Pop line. Weekly delta badge in JetBrains Mono.
+Routine implementation consistency
+% of teachers with active Current Track. Teal Mid progress ring (not shame-framed — labeled "System Health").
+Top classroom breakdowns
+Top 3 student patterns campus-wide. JetBrains Mono tag cloud + count. Teal Surface chips.
+Work completion trends
+Bar chart aggregate: Most / Some / Few per week. Amber / Teal Bright / Orange bars.
+Instructional time protected
+Cumulative "learning minutes recovered" counter in Amber. Hero metric for pilot reports.
+Coaching completion rate
+% teachers completing min 1 Playbook entry + 1 Liner Note per week.
+Evidence of culture shift
+Qualitative trend summary auto-generated every 30 days from pattern data.
+
+
+
+
+8 · DATA & EVIDENCE LAYER
+
+━━━━━━━━━━━━━━━━
+
+Evidence is built into normal use — not added as extra paperwork. Teachers capture their craft; the app surfaces the proof.
+
+
+
+
+
+8.1 · Core Metrics
+METRIC
+WHAT IT SHOWS
+Time to readiness
+Whether the room stabilizes faster after implementing R³AP routines.
+Number of redirects
+Whether teacher language and systems reduce repeated correction.
+Participation level
+Whether students are entering the learning community.
+Student response pattern
+What kind of student need is showing up most frequently.
+Script used
+Whether teachers are applying R³AP moves in the moment.
+Teacher state (TRS)
+How adult regulation relates to classroom conditions.
+Work completion
+Whether students are producing academic output.
+Target skill accuracy
+Whether engagement is translating into learning.
+Exit ticket / quick-check performance
+Whether students demonstrate same-day understanding.
+Instructional time protected
+Whether the system increases usable teaching and learning time.
+Wins captured in Liner Notes
+Qualitative evidence of teacher and student growth.
+Remix action used
+Whether the teacher rewrote, rebuilt, practiced, or created a track.
+Cypher participation
+Whether the teacher is engaging in shared practice and accountability.
+
+
+
+
+
+8.2 · Low-Burden Academic Quick Capture
+
+Three questions. Three taps. Under 15 seconds. Results feed directly into Master the Flow dashboard.
+
+
+Q1 — Task Completion:  Most students completed the task · Some students completed the task · Few students completed the task
+
+
+Q2 — Target Skill Understanding:  Strong understanding shown · Partial understanding shown · Limited understanding shown
+
+
+Q3 — Academic Time Protected:  Yes — full instructional time protected · Partially — minor disruptions · No — significant time lost
+
+UI: Three white cards, 3px Orange top border each. Three pill-button answer choices per card (Teal Surface default, Orange Pop on selection). Voice input also available for all three.
+
+
+
+
+9 · "LET&apos;S R.A.P. ABOUT IT" — COACHING CARD SYSTEM
+
+━━━━━━━━━━━━━━━━
+
+The coaching voice of the app. Not a navigation tab — a smart contextual card that surfaces when the system has something meaningful to say.
+
+
+
+
+
+9.1 · Trigger Conditions
+
+
+After Liner Notes are saved: pattern detected (3+ same events in 5 days)
+
+
+After Live use: immediate follow-up guidance on what was just surfaced
+
+
+After a repeated student pattern appears across multiple entries
+
+
+Inside Practice Station: scenario feedback card after completion
+
+
+Before Remix options: "Here&apos;s what the data suggests you need"
+
+
+In Cypher prompts: weekly coaching drop from Marlitha or Ray
+
+
+In Master the Flow: monthly pattern synthesis
+
+
+
+
+
+9.2 · Card Design Spec
+ELEMENT
+SPEC
+Container
+Bottom sheet, slides up. Deep Glass panel (rgba 26,95,122,0.25, blur 24px, radius 16px top corners). Teal Deep background behind.
+Coach Avatar
+Upper-left: 48×48px circle. Expression matched to content (Grounded / Encouraging / Challenge accepted). Name tag: JetBrains Mono, Amber, 11px.
+Card Title
+"Let&apos;s R.A.P. About It" — Inter Tight ExtraBold 800, 22px, white.
+R.A.P. Structure
+Four labeled sections: REFLECT · AWARE · ATTENTIVE · PURPOSEFUL PONDER. Each in JetBrains Mono Orange label + Inter Tight body text white.
+CTA row
+"Take Action" (primary orange button) · "Dismiss" (ghost button). Action routes to recommended screen.
+
+
+
+
+
+9.3 · Aware vs. Attentive — Governance Rule
+
+
+DO NOT DEVIATE FROM THESE DEFINITIONS:  Aware = current-moment orientation ("What is actually happening right now?") — NOT the wellness load. Attentive = internal response noticing ("What is my body doing right now?") — the somatic check-in. Purposeful Ponder = forward decision ("What does this moment require from me next?")
+
+
+
+
+10 · SOCIAL CONNECTIVITY & MEDIA INTEGRATION
+
+━━━━━━━━━━━━━━━━
+
+
+
+10.1 · Social Architecture
+
+R³AP&apos;s social layer lives primarily in The Cypher, with micro-social elements surfacing across all screens. The model: Spotify social feed + coach broadcast system + educator practice-sharing network. Cohort-scoped by default.
+FEATURE
+SCREEN + BEHAVIOR
+Track Listening Feed
+The Cypher. Suno-generated tracks shared from Remix C. Waveform visualization: Orange Pop bars on Teal Dark. Track card: spinning vinyl, Inter Tight title, grade/purpose tags in JetBrains Mono, play count.
+Routine Sharing
+The Cypher. Built routines from Remix B. Step count badge, grade band, "Borrowed by X" counter in Teal Mid. "Borrow This Routine" — Orange outlined CTA.
+Win Feed
+The Cypher. Short posts: short text + track badge + days-in-practice. Reactions: ♡ This Helped · ↺ I&apos;m Trying This.
+Cohort Pods
+The Cypher. 4–8 teachers. Shared track commitment visible. Pod streak counter (Orange flame + JetBrains Mono).
+Coach Broadcast
+The Cypher. Pinned top of feed. Coach avatar thumbnail. Short video or text. Teal Deep bg card, Orange accent bar.
+
+
+
+
+
+10.2 · Video Integration Specs
+SPEC
+REQUIREMENT
+Format
+MP4, H.264, 16:9 landscape, 1080p source minimum.
+Length
+30 seconds to 3 minutes. Chapter markers for longer content.
+Player UI
+Inline player. Orange Pop progress bar. Teal Dark scrubber background. Coach avatar lower-left during playback. Captions required — always on.
+Placement
+The Cypher (Weekly Drop, shared content), Onboarding, Practice Station (model responses), Playbook (optional).
+Privacy
+Cohort-only by default. No public sharing without explicit teacher opt-in.
+
+
+
+
+11 · NON-NEGOTIABLE CONSTRAINTS
+
+━━━━━━━━━━━━━━━━
+
+
+
+For the Visual Designer
+CONSTRAINT
+RULE
+App Canvas Background
+Always #F8FAFC (cool-slate). NEVER cream, warm white, or off-white. Cards are pure #FFFFFF.
+No Warm Backgrounds
+Zero bronze, tan, sepia, or cream (#F4EDE3) tones anywhere in the app. These belong to the marketing site only.
+Teal as Depth
+Use all five teal levels. Never flatten teal to a single color. The depth system creates visual hierarchy.
+Orange = Action
+#FF6B00 is reserved for primary actions, active states, and signal elements ONLY. Not decorative.
+Amber = Warmth/Secondary
+#FF9800 for hover states, gradient ends, warm accents, and track numerals. Not primary.
+Red = Warning Only
+#B8423D for "Do Not Say" and error states ONLY. Never used decoratively.
+Permanent Marker Font
+ONLY for PLURAL State celebration text and milestone unlocks. Nowhere else.
+No Animals
+No animals anywhere — not as icons, mascots, metaphors, or decorative elements.
+No Generic AI Imagery
+All imagery: polished, 3D-adjacent, hip-hop-culture-aligned. Coach avatars are high-fidelity 3D portraits.
+Live Screen
+Always ONE line, ONE Do Not Say, ONE next move, ONE return cue, ONE documentation prompt. Nothing more.
+Balance Period Placement
+Balance belongs ONLY in: Clear the Fog, The Cypher, Master the Flow.
+Grade-Band Label
+Always "Grade-Band Response Guidance." Never "Grade-Band Developmental Truths."
+Current Track Limit
+One active track per teacher at all times. No multi-track loading.
+Admin Privacy
+Admin cannot see individual private teacher reflections or wellness entries without explicit pilot agreement.
+
+
+
+
+12 · PILOT STRUCTURE — APP PHASE ALIGNMENT
+
+━━━━━━━━━━━━━━━━
+
+The R³AP pilot runs 9–12 weeks. App architecture maps directly to four pilot phases.
+PILOT PHASE
+APP SCREENS ACTIVATED / PRIORITIZED
+Phase 1: Set the Track (Week 1)
+Clear the Fog · Check Your Levels · Load the Track · Liner Notes (first entry). Goal: teacher baseline logged, Current Track assigned, academic outcome indicator identified.
+Phase 2: Build the Routine (Weeks 2–4)
+Read the Playbook · Practice Station · Live (first use). Goal: routine implementation data, time-to-readiness trend begins, redirect count baseline.
+Phase 3: Run the Moment (Weeks 5–8)
+Live (regular) · Liner Notes (daily) · Remix (first use) · The Cypher (active). Goal: scenario completion data, pattern detection active, exit ticket trend begins.
+Phase 4: Master the Flow (Weeks 9–12)
+Master the Flow dashboard (full unlock) · PLURAL State · Proof Builder generated. Goal: consolidated growth evidence, culture shift data, maintenance plan.
+
+
+
+
+13 · VISUAL DESIGNER HANDOFF CHECKLIST
+
+━━━━━━━━━━━━━━━━
+
+Confirm all required deliverables before the design phase begins.
+
+
+
+
+Color system: Full teal depth family (5 levels) + signal colors applied to all component states.
+
+
+Typography scale: Inter Tight + JetBrains Mono type system, all heading and body sizes.
+
+
+Component library: Glass panel variants (2 types), button states (primary/secondary/ghost), icon set (10 navigation icons).
+
+
+10 screen wireframes: Full layout mockup for each navigation screen.
+
+
+Live card mockup: 6-zone layout at full mobile fidelity.
+
+
+"Let&apos;s R.A.P. About It" card: Bottom sheet with coach avatar placement.
+
+
+Equalizer animation spec: 5-bar heights, Orange Pop colors, 0.8s timing curves.
+
+
+Coach avatar brief: 3D style guide — Marlitha and Raymond, 4 expression states each. Teal Dark + Orange color grading.
+
+
+Graffiti accent set: 5 accent words (FLOW · CLEAR · LIVE · REMIX · RAP) at correct opacity (10–15%), placement rules.
+
+
+Vinyl disc spec: Rotation speed, Teal Dark label, Orange groove accent.
+
+
+Cypher feed components: Win card, track-share card, coach broadcast card, pod streak indicator.
+
+
+Master the Flow dashboard: All metric card designs, PLURAL State visual, Proof Builder card.
+
+
+Morning Pulse widget: 3 state tiles (Calm/Tight/Overwhelmed with teal/amber/orange fills) + readiness score dial.
+
+
+Responsive breakpoints: Mobile (375px), tablet (768px), web (1280px).
+
+
+
+R³ Agency Practice
+
+Master App UI/UX Specification · Version 2.0
+
+Proprietary · May 2026 · CONFIDENTIAL
+
+
