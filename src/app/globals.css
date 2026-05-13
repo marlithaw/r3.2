@@ -368,6 +368,84 @@ html, body {
 }
 .fog-clearing { animation: fog-clear 6000ms cubic-bezier(0.4, 0, 0.2, 1) forwards; }
 
+/* Fog bank — real volumetric fog that drifts at rest, lifts on the breath */
+@keyframes fog-drift-a {
+  0%   { transform: translate3d(-6%, 4%, 0) scale(1.4); }
+  50%  { transform: translate3d(6%, -2%, 0) scale(1.5); }
+  100% { transform: translate3d(-6%, 4%, 0) scale(1.4); }
+}
+@keyframes fog-drift-b {
+  0%   { transform: translate3d(4%, 6%, 0) scale(1.6); }
+  50%  { transform: translate3d(-4%, 0%, 0) scale(1.5); }
+  100% { transform: translate3d(4%, 6%, 0) scale(1.6); }
+}
+@keyframes fog-drift-c {
+  0%   { transform: translate3d(0%, 2%, 0) scale(1.3); opacity: 0.55; }
+  50%  { transform: translate3d(3%, -1%, 0) scale(1.35); opacity: 0.7; }
+  100% { transform: translate3d(0%, 2%, 0) scale(1.3); opacity: 0.55; }
+}
+
+.fog-layer {
+  position: absolute;
+  inset: -20%;
+  pointer-events: none;
+  will-change: transform, opacity, filter;
+  mix-blend-mode: screen;
+}
+.fog-1 {
+  background:
+    radial-gradient(40% 30% at 25% 60%, rgba(220,232,238,0.55) 0%, rgba(220,232,238,0) 70%),
+    radial-gradient(35% 28% at 75% 70%, rgba(200,220,228,0.45) 0%, rgba(200,220,228,0) 65%);
+  animation: fog-drift-a 28s ease-in-out infinite;
+  opacity: 0.85;
+  filter: blur(40px);
+}
+.fog-2 {
+  background:
+    radial-gradient(50% 35% at 50% 80%, rgba(180,200,210,0.55) 0%, rgba(180,200,210,0) 70%),
+    radial-gradient(30% 22% at 15% 40%, rgba(220,232,238,0.4) 0%, rgba(220,232,238,0) 65%);
+  animation: fog-drift-b 36s ease-in-out infinite;
+  opacity: 0.7;
+  filter: blur(48px);
+}
+.fog-3 {
+  background:
+    radial-gradient(60% 40% at 50% 100%, rgba(225,235,240,0.6) 0%, rgba(225,235,240,0) 70%);
+  animation: fog-drift-c 22s ease-in-out infinite;
+  opacity: 0.6;
+  filter: blur(36px);
+}
+
+/* Fog lifts: rises up and fades on the breath. Triggered by .fog-lifting on the parent. */
+@keyframes fog-rise {
+  0%   { transform: translate3d(0, 0, 0)     scale(1.4); opacity: var(--fog-base-opacity, 0.85); filter: blur(40px); }
+  50%  { transform: translate3d(0, -30%, 0)  scale(1.55); opacity: 0.45; filter: blur(60px); }
+  100% { transform: translate3d(0, -90%, 0)  scale(1.7);  opacity: 0;    filter: blur(80px); }
+}
+.fog-lifting .fog-layer {
+  animation: fog-rise 5500ms cubic-bezier(0.35, 0, 0.2, 1) forwards;
+}
+.fog-lifting .fog-1 { --fog-base-opacity: 0.85; animation-delay: 0ms; }
+.fog-lifting .fog-2 { --fog-base-opacity: 0.70; animation-delay: 200ms; }
+.fog-lifting .fog-3 { --fog-base-opacity: 0.60; animation-delay: 500ms; }
+
+/* Fog dust — tiny floating motes that drift upward as the bank lifts */
+@keyframes mote-rise {
+  0%   { transform: translate3d(0, 0, 0); opacity: 0; }
+  20%  { opacity: 1; }
+  100% { transform: translate3d(var(--mx, 0), -120vh, 0); opacity: 0; }
+}
+.mote {
+  position: absolute;
+  width: 2px;
+  height: 2px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.85);
+  box-shadow: 0 0 6px rgba(255, 255, 255, 0.5);
+  opacity: 0;
+}
+.fog-lifting .mote { animation: mote-rise 5500ms ease-out forwards; }
+
 /* Cassette ribbon — stroke draw */
 @keyframes ribbon-draw {
   to { stroke-dashoffset: 0; }

@@ -39,6 +39,7 @@ export function Welcome() {
       aria-label="R³.A.P. Welcome"
     >
       <Backdrop phase={phase} />
+      <FogBank phase={phase} />
 
       {/* Subtle film grain / vignette so the bg never reads flat */}
       <div
@@ -67,24 +68,93 @@ export function Welcome() {
    ============================================================ */
 
 function Backdrop({ phase }: { phase: Phase }) {
-  const isClearing = phase === "breathing";
+  // Photo darkness/blur is its own track. Fog handled by <FogBank /> on top.
   const isCleared = phase === "reveal" || phase === "ready";
+  const isClearing = phase === "breathing";
+
+  let filter = "blur(14px) brightness(0.35) saturate(0.75)";
+  let transform = "scale(1.06)";
+  if (isClearing) {
+    filter = "blur(4px) brightness(0.65) saturate(0.9)";
+    transform = "scale(1.02)";
+  }
+  if (isCleared) {
+    filter = "blur(0px) brightness(0.85) saturate(1)";
+    transform = "scale(1)";
+  }
 
   return (
     <div
       aria-hidden
-      className={`absolute inset-0 bg-cover bg-center ${isClearing ? "fog-clearing" : ""}`}
+      className="absolute inset-0 bg-cover bg-center"
       style={{
         backgroundImage: "url('/welcome-bg.png')",
-        filter: isCleared
-          ? "blur(0px) brightness(0.85) saturate(1)"
-          : isClearing
-          ? undefined
-          : "blur(28px) brightness(0.20) saturate(0.6)",
-        transform: isCleared ? "scale(1)" : isClearing ? undefined : "scale(1.10)",
-        transition: isClearing ? "none" : "filter 800ms ease, transform 800ms ease",
+        filter,
+        transform,
+        transition: "filter 5500ms cubic-bezier(0.4, 0, 0.2, 1), transform 5500ms cubic-bezier(0.4, 0, 0.2, 1)",
       }}
     />
+  );
+}
+
+/* ============================================================
+   FogBank — real volumetric fog. Drifts at rest, lifts on breath.
+   ============================================================ */
+
+function FogBank({ phase }: { phase: Phase }) {
+  const lifting = phase === "breathing";
+  const gone = phase === "reveal" || phase === "ready";
+
+  if (gone) return null;
+
+  return (
+    <div
+      aria-hidden
+      className={`pointer-events-none absolute inset-0 overflow-hidden ${lifting ? "fog-lifting" : ""}`}
+    >
+      <div className="fog-layer fog-1" />
+      <div className="fog-layer fog-2" />
+      <div className="fog-layer fog-3" />
+
+      {/* Dust motes — only visible while lifting */}
+      {lifting && <Motes />}
+    </div>
+  );
+}
+
+function Motes() {
+  // Deterministic positions so SSR matches and we don't hydrate-mismatch.
+  const motes = [
+    { left: "12%", top: "85%", mx: "-12px", delay: 200, size: 2 },
+    { left: "22%", top: "78%", mx: "8px",   delay: 400, size: 1.5 },
+    { left: "31%", top: "92%", mx: "-6px",  delay: 0,   size: 2 },
+    { left: "44%", top: "82%", mx: "14px",  delay: 600, size: 2.5 },
+    { left: "53%", top: "88%", mx: "-10px", delay: 300, size: 1.5 },
+    { left: "62%", top: "76%", mx: "6px",   delay: 800, size: 2 },
+    { left: "71%", top: "90%", mx: "-14px", delay: 150, size: 2 },
+    { left: "82%", top: "84%", mx: "10px",  delay: 500, size: 1.5 },
+    { left: "88%", top: "94%", mx: "-8px",  delay: 700, size: 2.5 },
+    { left: "18%", top: "70%", mx: "4px",   delay: 1000, size: 1.5 },
+    { left: "48%", top: "72%", mx: "-4px",  delay: 1100, size: 2 },
+    { left: "76%", top: "68%", mx: "12px",  delay: 900, size: 1.5 },
+  ];
+  return (
+    <>
+      {motes.map((m, i) => (
+        <span
+          key={i}
+          className="mote"
+          style={{
+            left: m.left,
+            top: m.top,
+            width: m.size,
+            height: m.size,
+            animationDelay: `${m.delay}ms`,
+            ["--mx" as string]: m.mx,
+          } as React.CSSProperties}
+        />
+      ))}
+    </>
   );
 }
 
