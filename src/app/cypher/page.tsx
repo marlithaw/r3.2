@@ -130,8 +130,8 @@ function FeedCard({ post }: { post: CypherPost }) {
           color: "var(--deep-ink)",
           lineHeight: 1.45,
           fontFamily: borrow
-            ? "var(--font-jetbrains), monospace"
-            : "var(--font-inter-tight), system-ui, sans-serif",
+            ? "var(--font-space-mono), monospace"
+            : "var(--font-inter), system-ui, sans-serif",
         }}
       >
         {post.body}

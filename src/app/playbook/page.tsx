@@ -195,7 +195,7 @@ export default function PlaybookPage() {
             style={{
               color: "var(--red-warn)",
               textDecoration: "line-through",
-              fontFamily: "var(--font-jetbrains), monospace",
+              fontFamily: "var(--font-space-mono), monospace",
             }}
           >
             {stance.dont}

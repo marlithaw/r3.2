@@ -53,7 +53,7 @@ export default function LivePage() {
               background: "var(--action-grad)",
               color: "#fff",
               boxShadow: "0 6px 14px rgba(255,107,0,0.35)",
-              fontFamily: "var(--font-jetbrains), monospace",
+              fontFamily: "var(--font-space-mono), monospace",
               fontWeight: 700,
               fontSize: 9,
               letterSpacing: "0.06em",
@@ -99,8 +99,8 @@ export default function LivePage() {
                       borderLeft: `3px solid ${color}`,
                       paddingLeft: 10,
                       fontFamily: isDont
-                        ? "var(--font-jetbrains), monospace"
-                        : "var(--font-inter-tight), system-ui, sans-serif",
+                        ? "var(--font-space-mono), monospace"
+                        : "var(--font-inter), system-ui, sans-serif",
                       fontSize: isSay ? 16 : isDont ? 12 : 13,
                       fontWeight: isSay ? 600 : 400,
                       color: isDont ? "rgba(184,66,61,0.95)" : "rgba(255,255,255,0.92)",

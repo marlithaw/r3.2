@@ -157,8 +157,8 @@ function RemixLine({
         className="mt-1"
         style={{
           fontFamily: variant === "bad"
-            ? "var(--font-jetbrains), monospace"
-            : "var(--font-inter-tight), system-ui, sans-serif",
+            ? "var(--font-space-mono), monospace"
+            : "var(--font-inter), system-ui, sans-serif",
           fontWeight: variant === "warm" ? 500 : 600,
           fontStyle: styles.italic ? "italic" : "normal",
           textDecoration: styles.strike ? "line-through" : "none",

@@ -1,34 +1,44 @@
 import type { Metadata, Viewport } from "next";
-import { Inter_Tight, JetBrains_Mono, Permanent_Marker } from "next/font/google";
+import { Inter, Space_Mono, Permanent_Marker, Reenie_Beanie } from "next/font/google";
 import "./globals.css";
 import { AppShell } from "@/components/AppShell";
 
-const interTight = Inter_Tight({
+const inter = Inter({
   subsets: ["latin"],
-  variable: "--font-inter-tight",
+  variable: "--font-inter",
   weight: ["400", "500", "600", "700", "800"],
+  display: "swap",
 });
 
-const jetbrains = JetBrains_Mono({
+const spaceMono = Space_Mono({
   subsets: ["latin"],
-  variable: "--font-jetbrains",
-  weight: ["400", "500", "700"],
+  variable: "--font-space-mono",
+  weight: ["400", "700"],
+  display: "swap",
 });
 
-const marker = Permanent_Marker({
+const permanentMarker = Permanent_Marker({
   subsets: ["latin"],
   variable: "--font-marker",
   weight: ["400"],
+  display: "swap",
+});
+
+const reenieBeanie = Reenie_Beanie({
+  subsets: ["latin"],
+  variable: "--font-script",
+  weight: ["400"],
+  display: "swap",
 });
 
 export const metadata: Metadata = {
-  title: "R³AP · Teacher Studio",
+  title: "R³.A.P. · Teacher's Edition",
   description:
-    "R³ Agency Practice — the teacher's 10-track studio. Clear the Fog, Check Your Levels, Load the Track, Read the Playbook, Practice, go Live, capture Liner Notes, Remix, share at the Cypher, Master the Flow.",
+    "R³ Agency Practice — the teacher's studio. Orient. Rehearse. Go live. Reflect. Master the flow.",
 };
 
 export const viewport: Viewport = {
-  themeColor: "#0C3645",
+  themeColor: "#092D3A",
   width: "device-width",
   initialScale: 1,
   viewportFit: "cover",
@@ -36,7 +46,10 @@ export const viewport: Viewport = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className={`${interTight.variable} ${jetbrains.variable} ${marker.variable}`}>
+    <html
+      lang="en"
+      className={`${inter.variable} ${spaceMono.variable} ${permanentMarker.variable} ${reenieBeanie.variable}`}
+    >
       <body className="min-h-dvh">
         <AppShell>{children}</AppShell>
       </body>
