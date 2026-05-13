@@ -1,0 +1,249 @@
+@import "tailwindcss";
+
+/* ============================================================
+   R³AP — Modern Studio Design Tokens
+   Teal Depth System · Orange Signal · Studio Cypher Aesthetic
+   ============================================================ */
+
+:root {
+  /* ---- Teal Depth System (architectural color) ---- */
+  --teal-deepest:  #092D3A;
+  --teal-dark:     #0C3645;
+  --teal-mid:      #1A5F7A;
+  --teal-bright:   #32758C;
+  --teal-surface:  #D6E9EF;
+  --teal-mist:     #EBF4F7;
+
+  /* ---- Signal Color System ---- */
+  --orange-pop:    #FF6B00;
+  --amber:         #FF9800;
+  --red-warn:      #B8423D;
+  --green-check:   #2D7A4F;
+  --orange-tint:   rgba(255,107,0,0.10);
+  --teal-tint:     rgba(26,95,122,0.10);
+  --red-tint:      rgba(184,66,61,0.08);
+  --green-tint:    rgba(45,122,79,0.10);
+
+  /* ---- Neutral + Surface ---- */
+  --deep-ink:      #1A1A1A;
+  --cool-muted:    #64748B;
+  --pure-white:    #FFFFFF;
+  --app-canvas:    #F8FAFC;
+
+  /* ---- Semantic ---- */
+  --fg1:           var(--deep-ink);
+  --fg2:           var(--cool-muted);
+  --fg-on-dark:    #FFFFFF;
+  --fg-on-dark-2:  rgba(255,255,255,0.72);
+  --bg-canvas:     var(--app-canvas);
+  --bg-card:       var(--pure-white);
+  --bg-hero:       var(--teal-dark);
+  --bg-hero-deep:  var(--teal-deepest);
+  --action:        var(--orange-pop);
+  --action-warm:   var(--amber);
+  --action-grad:   linear-gradient(90deg, #FF6B00 0%, #FF9800 100%);
+
+  /* ---- Spacing ---- */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-6: 24px;
+  --space-8: 32px;
+  --space-12: 48px;
+  --space-16: 64px;
+
+  /* ---- Radii ---- */
+  --radius-tag: 4px;
+  --radius-input: 6px;
+  --radius-card: 12px;
+  --radius-sheet: 16px;
+
+  /* ---- Elevation ---- */
+  --elev-0: 0 0 0 1px rgba(0,0,0,0.08);
+  --elev-1: 0 4px 12px rgba(0,0,0,0.05);
+  --elev-2: 0 20px 40px rgba(0,0,0,0.15);
+  --elev-cta: 0 8px 16px rgba(255,107,0,0.25);
+  --elev-glass: 0 4px 24px rgba(9,45,58,0.30);
+
+  /* ---- Glass surfaces ---- */
+  --glass-on-teal:    rgba(255,255,255,0.10);
+  --glass-on-teal-bd: rgba(255,255,255,0.20);
+  --glass-deep:       rgba(26,95,122,0.25);
+  --glass-deep-bd:    rgba(50,117,140,0.40);
+}
+
+@theme inline {
+  --color-canvas: var(--app-canvas);
+  --color-card: var(--pure-white);
+  --color-ink: var(--deep-ink);
+  --color-muted: var(--cool-muted);
+  --color-teal-deepest: var(--teal-deepest);
+  --color-teal-dark: var(--teal-dark);
+  --color-teal-mid: var(--teal-mid);
+  --color-teal-bright: var(--teal-bright);
+  --color-teal-surface: var(--teal-surface);
+  --color-teal-mist: var(--teal-mist);
+  --color-orange-pop: var(--orange-pop);
+  --color-amber: var(--amber);
+  --color-red-warn: var(--red-warn);
+  --color-green-check: var(--green-check);
+  --font-display: var(--font-inter-tight);
+  --font-body: var(--font-inter-tight);
+  --font-mono: var(--font-jetbrains);
+  --font-marker: var(--font-marker);
+}
+
+html, body {
+  background: var(--bg-canvas);
+  color: var(--fg1);
+  font-family: var(--font-inter-tight), system-ui, -apple-system, sans-serif;
+  font-size: 16px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ============================================================
+   Type primitives (token-bound)
+   ============================================================ */
+.h-display {
+  font-family: var(--font-inter-tight), system-ui, sans-serif;
+  font-weight: 800;
+  letter-spacing: -0.04em;
+  line-height: 1.05;
+}
+.h-section {
+  font-family: var(--font-inter-tight), system-ui, sans-serif;
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  line-height: 1.1;
+}
+.label-mono {
+  font-family: var(--font-jetbrains), ui-monospace, monospace;
+  font-weight: 700;
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+.metric {
+  font-family: var(--font-inter-tight), system-ui, sans-serif;
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  font-variant-numeric: tabular-nums;
+}
+.marker {
+  font-family: var(--font-marker), var(--font-inter-tight), system-ui, sans-serif;
+  font-weight: 400;
+  letter-spacing: 0.01em;
+}
+
+/* ============================================================
+   Component primitives
+   ============================================================ */
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  background: var(--action-grad);
+  color: #fff;
+  font-family: var(--font-inter-tight), system-ui, sans-serif;
+  font-weight: 600;
+  font-size: 15px;
+  padding: 12px 24px;
+  border-radius: var(--radius-input);
+  border: 0;
+  cursor: pointer;
+  transition: transform 0.18s ease, box-shadow 0.18s ease;
+}
+.btn-primary:hover { transform: translateY(-2px); box-shadow: var(--elev-cta); }
+.btn-primary:active { transform: translateY(0); }
+.btn-primary:disabled { opacity: 0.6; cursor: not-allowed; transform: none; box-shadow: none; }
+
+.btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  background: transparent;
+  color: var(--teal-mid);
+  border: 2px solid var(--teal-mid);
+  font-family: var(--font-inter-tight), system-ui, sans-serif;
+  font-weight: 600;
+  font-size: 15px;
+  padding: 10px 22px;
+  border-radius: var(--radius-input);
+  cursor: pointer;
+  transition: background 0.18s ease, color 0.18s ease;
+}
+.btn-secondary:hover { background: var(--teal-mid); color: #fff; }
+
+.btn-ghost {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  background: transparent;
+  color: #fff;
+  border: 1px solid rgba(255,255,255,0.3);
+  font-family: var(--font-inter-tight), system-ui, sans-serif;
+  font-weight: 600;
+  font-size: 14px;
+  padding: 10px 18px;
+  border-radius: var(--radius-input);
+  cursor: pointer;
+}
+.btn-ghost:hover { background: rgba(255,255,255,0.08); }
+
+.card {
+  background: var(--bg-card);
+  border: 1px solid rgba(0,0,0,0.08);
+  border-top: 3px solid var(--teal-mid);
+  border-radius: var(--radius-card);
+  box-shadow: var(--elev-1);
+}
+.card-action { border-top-color: var(--orange-pop); }
+.card-growth { border-top-color: var(--green-check); }
+.card-warn   { border-top-color: var(--red-warn); }
+
+.glass-panel {
+  background: var(--glass-on-teal);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid var(--glass-on-teal-bd);
+  border-radius: var(--radius-card);
+  box-shadow: var(--elev-glass);
+  color: #fff;
+}
+
+.glass-deep {
+  background: var(--glass-deep);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border: 1px solid var(--glass-deep-bd);
+  border-radius: var(--radius-card);
+  box-shadow: var(--elev-glass);
+  color: #fff;
+}
+
+/* ============================================================
+   Animations
+   ============================================================ */
+@keyframes eqp {
+  0%, 100% { transform: scaleY(1); opacity: 1; }
+  50%      { transform: scaleY(0.5); opacity: 0.65; }
+}
+.eq-bar { animation: eqp 0.8s ease-in-out infinite; transform-origin: bottom; }
+
+@keyframes spin360 { to { transform: rotate(360deg); } }
+.spin-vinyl { animation: spin360 30s linear infinite; }
+
+@keyframes live-pulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(255,107,0,0.6); }
+  50%      { box-shadow: 0 0 0 8px rgba(255,107,0,0); }
+}
+.live-dot { animation: live-pulse 1.2s ease-in-out infinite; }
+
+/* Hide scrollbars in scrollable regions but keep scroll */
+.no-scrollbar::-webkit-scrollbar { display: none; }
+.no-scrollbar { scrollbar-width: none; }
