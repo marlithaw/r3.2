@@ -392,28 +392,30 @@ html, body {
   will-change: transform, opacity, filter;
   mix-blend-mode: screen;
 }
+/* Dense base fog blanket — covers the whole screen */
 .fog-1 {
   background:
-    radial-gradient(40% 30% at 25% 60%, rgba(220,232,238,0.55) 0%, rgba(220,232,238,0) 70%),
-    radial-gradient(35% 28% at 75% 70%, rgba(200,220,228,0.45) 0%, rgba(200,220,228,0) 65%);
-  animation: fog-drift-a 28s ease-in-out infinite;
-  opacity: 0.85;
-  filter: blur(40px);
+    radial-gradient(90% 70% at 50% 60%, rgba(210,225,232,0.75) 0%, rgba(210,225,232,0.55) 35%, rgba(210,225,232,0.30) 70%, rgba(210,225,232,0.12) 100%);
+  animation: fog-drift-a 30s ease-in-out infinite;
+  opacity: 0.95;
+  filter: blur(34px);
 }
+/* Mid drift layer */
 .fog-2 {
   background:
-    radial-gradient(50% 35% at 50% 80%, rgba(180,200,210,0.55) 0%, rgba(180,200,210,0) 70%),
-    radial-gradient(30% 22% at 15% 40%, rgba(220,232,238,0.4) 0%, rgba(220,232,238,0) 65%);
-  animation: fog-drift-b 36s ease-in-out infinite;
-  opacity: 0.7;
-  filter: blur(48px);
+    radial-gradient(55% 40% at 30% 35%, rgba(200,218,225,0.7) 0%, rgba(200,218,225,0) 70%),
+    radial-gradient(50% 38% at 75% 75%, rgba(220,232,238,0.65) 0%, rgba(220,232,238,0) 70%);
+  animation: fog-drift-b 38s ease-in-out infinite;
+  opacity: 0.85;
+  filter: blur(46px);
 }
+/* Foreground low fog */
 .fog-3 {
   background:
-    radial-gradient(60% 40% at 50% 100%, rgba(225,235,240,0.6) 0%, rgba(225,235,240,0) 70%);
-  animation: fog-drift-c 22s ease-in-out infinite;
-  opacity: 0.6;
-  filter: blur(36px);
+    radial-gradient(75% 50% at 50% 100%, rgba(225,235,240,0.85) 0%, rgba(225,235,240,0.4) 50%, rgba(225,235,240,0) 75%);
+  animation: fog-drift-c 24s ease-in-out infinite;
+  opacity: 0.75;
+  filter: blur(30px);
 }
 
 /* Fog lifts: rises up and fades on the breath. Triggered by .fog-lifting on the parent. */
@@ -425,9 +427,21 @@ html, body {
 .fog-lifting .fog-layer {
   animation: fog-rise 5500ms cubic-bezier(0.35, 0, 0.2, 1) forwards;
 }
-.fog-lifting .fog-1 { --fog-base-opacity: 0.85; animation-delay: 0ms; }
-.fog-lifting .fog-2 { --fog-base-opacity: 0.70; animation-delay: 200ms; }
-.fog-lifting .fog-3 { --fog-base-opacity: 0.60; animation-delay: 500ms; }
+.fog-lifting .fog-1 { --fog-base-opacity: 0.95; animation-delay: 0ms; }
+.fog-lifting .fog-2 { --fog-base-opacity: 0.85; animation-delay: 200ms; }
+.fog-lifting .fog-3 { --fog-base-opacity: 0.75; animation-delay: 500ms; }
+
+/* Beat-drop punch — for the DMX archetype reveal */
+@keyframes beat-drop {
+  0%   { opacity: 0; transform: scale(1.6); filter: blur(10px); letter-spacing: 0.18em; }
+  55%  { opacity: 1; transform: scale(0.94); filter: blur(0); }
+  80%  { transform: scale(1.02); }
+  100% { opacity: 1; transform: scale(1.00); filter: blur(0); letter-spacing: 0.02em; }
+}
+.beat-drop {
+  animation: beat-drop 360ms cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+  display: inline-block;
+}
 
 /* Fog dust — tiny floating motes that drift upward as the bank lifts */
 @keyframes mote-rise {
